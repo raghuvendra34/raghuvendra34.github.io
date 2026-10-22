@@ -1,1082 +1,1424 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raghuvendra Kumar — AI/ML Engineer</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #f7f8fc;
-      --surface: #ffffff;
-      --surface2: #f0f2f8;
-      --border: #e2e6f0;
-      --text: #0f1117;
-      --muted: #5a6278;
-      --accent: #3a5bef;
-      --accent-light: #eef1ff;
-      --accent2: #10b981;
-      --accent2-light: #ecfdf5;
-      --tag-bg: #f0f2f8;
-      --tag-text: #3a4060;
-      --shadow: 0 2px 12px rgba(58, 91, 239, 0.06);
-      --radius: 12px;
-      --radius-sm: 8px;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 99;
-      background: rgba(247, 248, 252, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 56px;
-    }
-
-    .nav-logo {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-
-    .nav-logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* ── LAYOUT ── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: 4rem 0;
-    }
-
-    section+section {
-      border-top: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 2rem;
-      color: var(--text);
-    }
-
-    /* ── HERO ── */
-    #hero {
-      padding: 5rem 0 4rem;
-      border-top: none;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 20px;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 540px;
-      margin-bottom: 2rem;
-      line-height: 1.65;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 3px 14px rgba(58, 91, 239, 0.3);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 5px 18px rgba(58, 91, 239, 0.4);
-    }
-
-    .btn-ghost {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      background: var(--surface2);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      margin-top: 2.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent2);
-      flex-shrink: 0;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .about-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-    }
-
-    .about-card-icon {
-      font-size: 22px;
-      margin-bottom: 0.75rem;
-    }
-
-    .about-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .about-card p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-    }
-
-    .skill-group-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.9px;
-      margin-bottom: 0.85rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .tag {
-      font-size: 12px;
-      font-weight: 500;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .tag.hot {
-      background: var(--accent-light);
-      color: var(--accent);
-      border-color: #c7d0fa;
-    }
-
-    .tag.green {
-      background: var(--accent2-light);
-      color: #065f46;
-      border-color: #a7f3d0;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      transition: box-shadow 0.2s, border-color 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--accent);
-      border-radius: 3px 0 0 3px;
-    }
-
-    .project-card.green-accent::before {
-      background: var(--accent2);
-    }
-
-    .project-card:hover {
-      box-shadow: var(--shadow);
-      border-color: #c5ccf0;
-    }
-
-    .project-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-title-wrap {
-      flex: 1;
-    }
-
-    .project-number {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 3px;
-    }
-
-    .project-title {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-
-    .project-badges {
-      display: flex;
-      gap: 7px;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-
-    .badge-live {
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-    }
-
-    .badge-hot {
-      background: var(--accent-light);
-      color: var(--accent);
-      border: 1px solid #c7d0fa;
-    }
-
-    .project-desc {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      line-height: 1.65;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 1.1rem;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .project-link {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 5px 13px;
-      border-radius: 7px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: background 0.15s;
-    }
-
-    .project-link:hover {
-      background: var(--accent-light);
-      text-decoration: none;
-      border-color: #c7d0fa;
-    }
-
-    .project-link svg {
-      width: 13px;
-      height: 13px;
-    }
-
-    /* ── PROFILES ── */
-    .profiles-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .profile-card {
-      flex: 1;
-      min-width: 200px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: box-shadow 0.2s;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .profile-card:hover {
-      box-shadow: var(--shadow);
-      text-decoration: none;
-      border-color: #c5ccf0;
-    }
-
-    .profile-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .profile-card h3 {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .profile-card p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      border-top: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--accent);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      nav {
-        padding: 0 1rem;
-      }
-
-      .nav-links {
-        gap: 1rem;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-header {
-        flex-direction: column;
-      }
-
-      .project-badges {
-        justify-content: flex-start;
-      }
-
-      h1 {
-        font-size: 30px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raghuvendra Kumar — AI/ML Engineer &amp; Data Scientist</title>
+<meta name="description" content="Interactive Minecraft-inspired portfolio of Raghuvendra Kumar — AI/ML Engineer &amp; Data Scientist. Multi-agent systems, RAG pipelines, ML models that ship.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Raghuvendra Kumar — AI/ML Engineer &amp; Data Scientist">
+<meta property="og:description" content="Interactive Minecraft-style portfolio: multi-agent systems, RAG pipelines and ML models that ship.">
+<meta name="theme-color" content="#0b0b12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MINECRAFT PORTFOLIO — UI STYLES
+   ============================================================ */
+:root{
+  --panel:#c6c6c6; --panel-light:#ffffff; --panel-dark:#555555; --panel-edge:#000000;
+  --ink:#222222; --ink-soft:#3f3f3f;
+  --mc-green:#5fae3f; --mc-green-hi:#7ee83b; --xp-green:#80ff20;
+  --gold:#fcee6e; --diamond:#5ff2e0; --purple:#a64dff;
+  --slot-bg:rgba(20,20,20,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:#000}
+body{font-family:'VT323',monospace;color:var(--ink);font-size:20px}
+button{font-family:inherit;cursor:pointer}
+canvas{display:block}
+.pixelated{image-rendering:pixelated;image-rendering:crisp-edges}
+
+/* ---------- 3D stage ---------- */
+#gl{position:fixed;inset:0;z-index:1;transition:transform .9s ease, filter .9s ease}
+#gl canvas{width:100%;height:100%}
+#gl.warping{transform:scale(1.18) rotate(1.6deg);filter:saturate(1.7) hue-rotate(38deg) blur(1px)}
+
+/* Portal swirl overlay */
+#swirl{position:fixed;inset:-30%;z-index:30;pointer-events:none;opacity:0;
+  background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(123,47,247,.85) 0deg 14deg, rgba(196,125,255,.75) 14deg 30deg, rgba(84,16,180,.85) 30deg 46deg, rgba(166,77,255,.7) 46deg 60deg);
+  transition:opacity .45s ease}
+#swirl.on{opacity:.88;animation:swirlspin 1.1s linear infinite}
+@keyframes swirlspin{from{transform:rotate(0deg) scale(1)}to{transform:rotate(160deg) scale(1.35)}}
+
+/* Loading-terrain screen (dirt background set from JS texture) */
+#loading{position:fixed;inset:0;z-index:40;display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:#3a2718;background-size:64px 64px;image-rendering:pixelated}
+#loading.on{display:flex}
+#loading h2{font-family:'Press Start 2P',monospace;color:#fff;font-size:clamp(15px,3.4vw,26px);text-shadow:3px 3px 0 #3f3f3f;letter-spacing:1px;text-align:center;padding:0 12px}
+#loadbarWrap{width:min(520px,78vw);height:26px;background:#1c1c1c;border:3px solid #000;box-shadow:inset 0 0 0 2px #6d6d6d}
+#loadbar{height:100%;width:0%;background:repeating-linear-gradient(90deg,#5fae3f 0 14px,#6abe30 14px 28px);transition:width .18s linear}
+#loadTip{color:#e8e0c8;font-size:clamp(17px,2.6vw,23px);text-shadow:2px 2px 0 #222;text-align:center;padding:0 16px;min-height:1.4em}
+
+/* Fade veil */
+#fade{position:fixed;inset:0;background:#000;z-index:25;pointer-events:none;opacity:0;transition:opacity .35s ease}
+#fade.on{opacity:1}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;inset:0;z-index:10;pointer-events:none}
+#hud .clickable{pointer-events:auto}
+
+/* Brand chip — name + role visible immediately */
+#brand{position:absolute;top:12px;left:12px;max-width:min(430px,72vw)}
+#brand h1{font-family:'Press Start 2P',monospace;font-size:clamp(13px,2.6vw,19px);color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,.55);line-height:1.5}
+#brand p{display:inline-block;margin-top:7px;background:rgba(0,0,0,.55);color:var(--gold);padding:3px 10px 5px;font-size:clamp(16px,2.6vw,21px);letter-spacing:.5px;border:2px solid rgba(255,255,255,.25)}
+#brand .avail{display:block;margin-top:6px;color:#b6ffb0;font-size:16px;text-shadow:1px 1px 0 #000}
+
+/* Top-right utility buttons */
+#topBtns{position:absolute;top:12px;right:12px;display:flex;gap:8px}
+.mc-btn{background:#6f6f6f;color:#fff;border:3px solid #000;box-shadow:inset 2px 2px 0 #a8a8a8,inset -2px -2px 0 #3d3d3d;
+  padding:8px 12px;font-size:18px;line-height:1;text-shadow:1px 1px 0 #333}
+.mc-btn:hover{background:#7f8fc9}
+.mc-btn:active{transform:translateY(1px)}
+.mc-btn.green{background:#548c2c;box-shadow:inset 2px 2px 0 #7fbf4d,inset -2px -2px 0 #33571a}
+.mc-btn.green:hover{background:#639c38}
+.mc-btn.gold{background:#8a6d1c;box-shadow:inset 2px 2px 0 #c9a227,inset -2px -2px 0 #54430f;color:#fff7cf}
+#simpleBtn{font-size:16px}
+
+/* Crosshair */
+#crosshair{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-size:26px;
+  text-shadow:0 0 3px #000;mix-blend-mode:difference;opacity:.9;font-family:monospace}
+
+/* Hint line */
+#hint{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.7);
+  font-size:17px;text-align:center;width:max-content;max-width:92vw;opacity:.92}
+
+/* ---------- Inventory-style panels ---------- */
+.mc-panel{background:var(--panel);border:3px solid var(--panel-edge);
+  box-shadow:inset 3px 3px 0 var(--panel-light),inset -3px -3px 0 var(--panel-dark), 6px 6px 0 rgba(0,0,0,.35);
+  padding:16px 18px}
+#panel{position:absolute;right:12px;top:76px;width:min(430px,94vw);max-height:calc(100vh - 230px);overflow-y:auto;pointer-events:auto}
+#panel h2{font-family:'Press Start 2P',monospace;font-size:14px;color:#3f3f3f;margin-bottom:10px;line-height:1.6}
+#panel h3{font-family:'Press Start 2P',monospace;font-size:10.5px;color:#4a4a4a;margin:13px 0 6px;line-height:1.6}
+#panel p{font-size:20px;line-height:1.28;color:var(--ink)}
+#panel .dim{color:#5a5a5a;font-size:18px}
+#panel a{color:#2b3ed0;text-decoration:underline}
+#panel .ctaRow{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+#panel::-webkit-scrollbar{width:10px}#panel::-webkit-scrollbar-thumb{background:#8b8b8b;border:2px solid #555}
+.chip{display:inline-block;background:#8b8b8b;color:#fff;padding:1px 8px 3px;margin:2px 3px 2px 0;font-size:17px;box-shadow:inset 1px 1px 0 #bdbdbd,inset -1px -1px 0 #5a5a5a}
+
+/* Ore / skill grid */
+.oreGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.oreCell{background:#8b8b8b;border:3px solid #000;box-shadow:inset 2px 2px 0 #aeaeae,inset -2px -2px 0 #5f5f5f;
+  padding:5px 2px 3px;text-align:center;color:#fff}
+.oreCell img{width:38px;height:38px}
+.oreCell span{display:block;font-size:14.5px;line-height:1.05;text-shadow:1px 1px 0 #444}
+.oreCell.sel{background:#6d7fc4;box-shadow:inset 2px 2px 0 #fff,inset -2px -2px 0 #33427c,0 0 0 2px #fff}
+#skillDetail{margin-top:11px;background:#dedede;border:2px solid #555;padding:9px 11px;min-height:74px}
+#skillDetail b{color:#1d1d1d}
+
+/* Crafting recipes */
+.recipe{display:flex;align-items:center;gap:10px;background:#dedede;border:2px solid #555;padding:8px;margin-top:8px;width:100%;text-align:left}
+.recipe:hover{background:#ececec}
+.recipe.sel{outline:3px solid #fff;box-shadow:0 0 0 5px #6d7fc4}
+.grid3{display:grid;grid-template-columns:repeat(3,26px);gap:2px;flex:none}
+.grid3 i,.resSlot{display:block;width:26px;height:26px;background:#8b8b8b;box-shadow:inset 2px 2px 0 #5f5f5f,inset -2px -2px 0 #bdbdbd}
+.grid3 i img,.resSlot img{width:100%;height:100%}
+.arrow{font-size:24px;color:#3f3f3f;flex:none}
+.resSlot{width:40px;height:40px;flex:none}
+.recipeMeta b{display:block;font-size:20px;line-height:1.1;color:#1c1c1c}
+.recipeMeta small{font-size:16px;color:#565656;line-height:1.1}
+#projDetail{margin-top:11px;background:#dedede;border:2px solid #555;padding:9px 11px}
+#projDetail:empty{display:none}
+
+/* Advancements */
+.advGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.advCard{background:#3b3b3b;border:2px solid #000;box-shadow:inset 2px 2px 0 #5c5c5c;color:#ddd;padding:8px;display:flex;gap:9px;align-items:flex-start}
+.advCard img{width:34px;height:34px;flex:none;background:#8b8b8b;box-shadow:inset 2px 2px 0 #5f5f5f,inset -2px -2px 0 #bdbdbd}
+.advCard b{display:block;color:#fff;font-size:18px;line-height:1.1}
+.advCard small{font-size:15.5px;color:#bdbdbd;line-height:1.15}
+.advCard.locked{opacity:.45;filter:grayscale(.8)}
+
+/* Advancement toast */
+#toast{position:absolute;top:64px;right:12px;width:min(340px,90vw);display:none;z-index:12}
+#toast.on{display:block;animation:toastin .35s ease}
+@keyframes toastin{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+#toast .mc-panel{background:#212121;color:#eee;box-shadow:inset 3px 3px 0 #4c4c4c,inset -3px -3px 0 #000,6px 6px 0 rgba(0,0,0,.35)}
+#toast small{color:var(--gold);font-size:16px}
+#toast b{display:block;font-size:21px;color:#fff}
+
+/* Villager dialogue */
+#dialogue{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);width:min(560px,94vw);display:none;pointer-events:auto}
+#dialogue.on{display:block}
+#dialogue .who{font-family:'Press Start 2P',monospace;font-size:10px;color:#4c7a34;margin-bottom:5px}
+#dialogue p{min-height:52px;font-size:21px}
+#dialogue .next{float:right;margin-top:4px}
+
+/* Contact form (End) */
+#panel input,#panel textarea{width:100%;background:#dedede;border:2px solid #555;font-family:'VT323',monospace;
+  font-size:19px;padding:6px 8px;margin:4px 0 9px;color:#1c1c1c}
+#panel label{font-size:17px;color:#444}
+
+/* ---------- Hotbar ---------- */
+#hotbarWrap{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);text-align:center;pointer-events:auto}
+#statusRow{display:flex;justify-content:space-between;width:100%;color:#fff;font-size:15px;text-shadow:1px 1px 0 #000;padding:0 2px}
+#xpbar{position:relative;height:7px;background:#202020;border:2px solid #000;margin:2px 0 4px}
+#xpfill{height:100%;width:0%;background:linear-gradient(#a4ff70,#6fe34a);transition:width .6s ease}
+#xplvl{position:absolute;left:50%;top:-17px;transform:translateX(-50%);color:var(--xp-green);
+  font-family:'Press Start 2P',monospace;font-size:11px;text-shadow:2px 2px 0 #1d3a05}
+#hotbar{display:flex;gap:3px;background:rgba(0,0,0,.35);padding:3px;border:2px solid #1b1b1b;box-shadow:inset 0 0 0 2px #6d6d6d}
+.slot{position:relative;width:52px;height:52px;background:var(--slot-bg);border:2px solid #373737;box-shadow:inset 2px 2px 0 #8b8b8b,inset -2px -2px 0 #565656;
+  display:flex;align-items:center;justify-content:center;padding:0}
+.slot img{width:40px;height:40px;pointer-events:none}
+.slot .num{position:absolute;top:1px;left:4px;color:#ddd;font-size:13px;text-shadow:1px 1px 0 #000;pointer-events:none}
+.slot.sel{border-color:#fff;box-shadow:inset 2px 2px 0 #cfcfcf,inset -2px -2px 0 #8a8a8a,0 0 0 1px #fff}
+.slot:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+
+/* Tooltip (purple-bordered, Minecraft style) */
+#tooltip{position:fixed;z-index:50;pointer-events:none;display:none;background:rgba(16,0,16,.93);
+  border:2px solid #25005a;outline:1px solid #5000ff;color:#fff;padding:5px 9px 7px;font-size:18px;line-height:1.15;max-width:280px}
+#tooltip .tt-name{color:#f6f6f6}
+#tooltip .tt-sub{color:#a8a8ff;font-size:16px}
+#tooltip .tt-rare{color:var(--diamond)}
+
+/* ---------- Simple (recruiter) page ---------- */
+#simplePage{position:fixed;inset:0;z-index:60;background:#f4f1ea;overflow-y:auto;display:none;padding:28px 18px 60px}
+#simplePage.on{display:block}
+#simplePage .wrap{max-width:820px;margin:0 auto;background:#fff;border:1px solid #ddd;padding:30px 34px;box-shadow:0 2px 14px rgba(0,0,0,.08)}
+#simplePage h1{font-family:Georgia,serif;font-size:32px;margin-bottom:2px}
+#simplePage h2{font-family:Georgia,serif;font-size:21px;margin:26px 0 8px;border-bottom:2px solid #5fae3f;padding-bottom:4px}
+#simplePage p,#simplePage li{font-family:Georgia,serif;font-size:16.5px;line-height:1.55;color:#222}
+#simplePage ul{padding-left:20px}
+#simplePage .role{color:#444;font-size:19px}
+#simplePage a{color:#2050c8}
+
+@media (max-width:760px){
+  .slot{width:40px;height:40px}.slot img{width:31px;height:31px}
+  #panel{top:auto;bottom:128px;right:50%;transform:translateX(50%);max-height:44vh}
+  #dialogue{bottom:128px}
+  #hint{display:none}
+  #brand .avail{display:none}
+  .oreGrid{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  #swirl.on{animation:none}
+  #gl{transition:none}
+}
+</style>
+<noscript><style>#simplePage{display:block !important}#hud,#gl{display:none !important}</style></noscript>
 </head>
-
 <body>
 
-  <nav>
-    <span class="nav-logo">Raghuvendra<span>.</span></span>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<!-- ================= 3D STAGE ================= -->
+<div id="gl" aria-hidden="true"></div>
+<div id="swirl" aria-hidden="true"></div>
+<div id="fade" aria-hidden="true"></div>
 
-  <!-- ── HERO ── -->
-  <section id="hero">
-    <div class="container">
+<!-- ================= LOADING TERRAIN ================= -->
+<div id="loading" role="status" aria-live="polite">
+  <h2>Loading terrain…</h2>
+  <div id="loadbarWrap"><div id="loadbar"></div></div>
+  <div id="loadTip">Tip: hire this developer</div>
+</div>
 
-      <h1>Raghuvendra<br /><span>Kumar</span></h1>
-      <p class="hero-sub">
-        B.Tech student specializing in Artificial Intelligence & Machine Learning at VIT Bhopal. Passionate about
-        Machine Learning, Generative AI, Multi-Agent Systems, and building production-ready AI applications.
-      </p>
-      <div class="hero-actions">
-        <a href="mailto:raghuvendrakumar34@gmail.com" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-          Get in Touch
-        </a>
-        <a href="https://github.com/raghuvendra34" target="_blank" class="btn btn-ghost">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-            <path
-              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-          </svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/raghuvendra-kumar-76919128a" target="_blank" class="btn btn-ghost">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-            <path
-              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-          </svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="hero-meta">
-        <span class="meta-item"><span class="meta-dot"></span> VIT Bhopal — B.Tech AIML</span>
-        <span class="meta-item"><span class="meta-dot"></span> 7+ AI/ML & Generative AI Projects</span>
-        <span class="meta-item"><span class="meta-dot"></span> raghuvendrakumar34@gmail.com</span>
-      </div>
-    </div>
-  </section>
+<!-- ================= HUD ================= -->
+<div id="hud">
+  <div id="brand">
+    <h1>RAGHUVENDRA&nbsp;KUMAR</h1>
+    <p>AI/ML Engineer &amp; Data Scientist</p>
+    <span class="avail">● Available for full-time roles — final-year, VIT Bhopal</span>
+  </div>
 
-  <!-- ── ABOUT ── -->
-  <section id="about">
-    <div class="container">
-      <p class="section-label">About Me</p>
-      <h2 class="section-title">AI & Machine Learning Engineer</h2>
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-card-icon"></div>
-          <h3>Generative AI & Agents</h3>
-          <p>Passionate about LLM-powered systems and multi-agent architectures using LangChain and LangGraph. I love
-            pushing the boundaries of what AI can autonomously reason and do.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-icon"></div>
-          <h3>Machine Learning</h3>
-          <p>Hands-on experience building and deploying end-to-end ML pipelines — from preprocessing and feature
-            engineering to model evaluation and Streamlit deployment.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-icon"></div>
-          <h3>Deep Learning & CV</h3>
-          <p>Built CNN-based image classification models using TensorFlow and Keras for real-world agricultural
-            applications, achieving production-grade results.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-icon"></div>
-          <h3>Deploy</h3>
-          <p>I don't just build models — I deploy them. Multiple live Streamlit apps and an active GitHub portfolio with
-            clean, readable code are my calling cards.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="topBtns" class="clickable">
+    <button class="mc-btn" id="soundBtn" aria-label="Toggle sound">🔊 Sound</button>
+    <button class="mc-btn" id="motionBtn" aria-label="Toggle reduced motion">Motion: On</button>
+    <button class="mc-btn green" id="simpleBtn" aria-label="Skip animation and view as a simple page">Skip animation — simple page</button>
+  </div>
 
+  <div id="crosshair" aria-hidden="true">+</div>
+  <div id="hint">Move mouse to look around · Click blocks · Keys 1–6 travel between worlds</div>
 
-  <!-- ── EDUCATION ── -->
-  <section id="education">
-    <div class="container">
-      <p class="section-label">Education</p>
-      <h2 class="section-title">Academic Background</h2>
-      <div class="about-card">
-        <h3>VIT Bhopal University</h3>
-        <p>
-          Bachelor of Technology (B.Tech) in Artificial Intelligence & Machine Learning
-          <br>
-          Graduation: 2027
-        </p>
-      </div>
-    </div>
-  </section>
+  <!-- Section content panel (inventory style) -->
+  <section id="panel" class="mc-panel" aria-live="polite" aria-label="Section details"></section>
 
-  <!-- ── SKILLS ── -->
+  <!-- Advancement toast -->
+  <div id="toast" role="status"><div class="mc-panel">
+    <small>Advancement Made!</small><b id="toastTitle">Diamonds!</b>
+  </div></div>
 
-  <section id="skills">
-    <div class="container">
-      <p class="section-label">Technical Skills</p>
-      <h2 class="section-title">What I bring to the table</h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <div class="skill-group-title">RAG & Vector DB</div>
-          <div class="tags">
-            <span class="tag hot">RAG</span>
-            <span class="tag hot">ChromaDB</span>
-            <span class="tag hot">Semantic Search</span>
-            <span class="tag">Vector Embeddings</span>
-            <span class="tag">LangChain</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Speech & Audio AI</div>
-          <div class="tags">
-            <span class="tag hot">OpenAI Whisper</span>
-            <span class="tag hot">Speech-to-Text</span>
-            <span class="tag">Mistral AI</span>
-            <span class="tag">Sarvam API</span>
-            <span class="tag">Audio Chunking</span>
-            <span class="tag">pydub</span>
-            <span class="tag">FFmpeg</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Generative AI</div>
-          <div class="tags">
-            <span class="tag hot">LangChain</span>
-            <span class="tag hot">LangGraph</span>
-            <span class="tag hot">Agentic AI</span>
-            <span class="tag hot">LLM Apps</span>
-            <span class="tag hot">Prompt Engineering</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">ML / DL</div>
-          <div class="tags">
-            <span class="tag">TensorFlow</span>
-            <span class="tag">Keras</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">XGBoost</span>
-            <span class="tag">Random Forest</span>
-            <span class="tag">CNN</span>
-            <span class="tag">SVM</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">NLP</div>
-          <div class="tags">
-            <span class="tag">TF-IDF</span>
-            <span class="tag">NLTK</span>
-            <span class="tag">Text Classification</span>
-            <span class="tag">Cosine Similarity</span>
-            <span class="tag">Feature Engineering</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Computer Vision</div>
-          <div class="tags">
-            <span class="tag">OpenCV</span>
-            <span class="tag">Image Classification</span>
-            <span class="tag">Model Training</span>
-            <span class="tag">Deep Learning</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Tools & Deploy</div>
-          <div class="tags">
-            <span class="tag green">Streamlit</span>
-            <span class="tag green">GitHub</span>
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">Matplotlib</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Problem Solving</div>
-          <div class="tags">
-            <span class="tag">LeetCode</span>
-            <span class="tag">DSA</span>
-            <span class="tag">SMOTE</span>
-            <span class="tag">Imbalanced Data</span>
-            <span class="tag">Model Evaluation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Villager dialogue (Village biome) -->
+  <div id="dialogue" class="mc-panel" role="dialog" aria-label="Villager dialogue">
+    <div class="who">VILLAGER — “Hrmm.”</div>
+    <p id="dialogueText"></p>
+    <button class="mc-btn next" id="dialogueNext">Next ▶</button>
+  </div>
 
-  <!-- ── PROJECTS ── -->
-  <section id="projects">
-    <div class="container">
-      <p class="section-label">Projects</p>
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
+  <!-- Hotbar -->
+  <div id="hotbarWrap">
+    <div id="statusRow"><span>❤❤❤❤❤❤❤❤❤❤</span><span id="biomeName">Overworld — Spawn</span><span>🍗🍗🍗🍗🍗</span></div>
+    <div id="xpbar"><div id="xpfill"></div><span id="xplvl">0</span></div>
+    <nav id="hotbar" aria-label="Portfolio sections"></nav>
+  </div>
+</div>
 
-        <!-- 1. Multi-Agent Research System -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title-wrap">
-              <div class="project-number">01 / AI Agents</div>
-              <div class="project-title">Multi-Agent Research System</div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-live">Live</span>
+<div id="tooltip" role="tooltip"></div>
 
-            </div>
-          </div>
-          <p class="project-desc">
-            Multi-agent AI research pipeline built with LangChain and Gemini 2.5 Flash. Four specialized agents —
-            Search, Reader, Writer, and Critic — autonomously gather web data, scrape sources, generate structured
-            reports, and self-review output quality. Deployed with a Streamlit UI.
-          </p>
-          <div class="project-tags">
-            <span class="tag hot">Generative AI</span>
-            <span class="tag hot">LangGraph</span>
-            <span class="tag hot">LangChain</span>
-            <span class="tag hot">Agentic AI</span>
-            <span class="tag">LLM</span>
-            <span class="tag">Python</span>
-          </div>
-          <div class="project-links">
-            <a href="https://multi-agent-research-system-cofqqslrvdsoqprsmugb7n.streamlit.app/" target="_blank"
-              class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-              Live Demo
-            </a>
-            <a href="https://github.com/raghuvendra34/Multi-Agent-Research-System" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              GitHub
-            </a>
-          </div>
-        </div>
+<!-- ================= SIMPLE / RECRUITER PAGE ================= -->
+<main id="simplePage">
+  <div class="wrap">
+    <button class="mc-btn green" id="back3d" style="float:right">← Back to 3D world</button>
+    <h1>Raghuvendra Kumar</h1>
+    <p class="role">AI/ML Engineer &amp; Data Scientist</p>
+    <p>Final-year B.Tech (AI &amp; ML) at VIT Bhopal, available for full-time roles now. I build ML systems and
+       LLM-powered applications end to end — data pipelines, model training, RAG and multi-agent systems — and I ship
+       them as live, deployed products.</p>
+    <p>
+      <a href="Resume.pdf" download>Download Resume (PDF)</a> ·
+      <a href="mailto:raghuvendrakumar34@gmail.com">raghuvendrakumar34@gmail.com</a> ·
+      <a href="https://github.com/raghuvendra34" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/raghuvendra-kumar-76919128a/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
 
-        <!-- 2. AI Video Assistant -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title-wrap">
-              <div class="project-number">02 / Generative AI</div>
-              <div class="project-title">AI Video Assistant</div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-live">Live</span>
-              <span class="badge badge-hot">RAG</span>
-            </div>
-          </div>
-          <p class="project-desc">
-            End-to-end AI-powered multimedia assistant that turns audio and video into actionable insights. Built with
-            OpenAI Whisper for speech-to-text transcription, Mistral AI for summarization and Q&amp;A, and
-            Retrieval-Augmented Generation (RAG) with ChromaDB for context-aware conversations over long-form content.
-          </p>
-          <div class="project-tags">
-            <span class="tag hot">RAG</span>
-            <span class="tag hot">OpenAI Whisper</span>
-            <span class="tag hot">Mistral AI</span>
-            <span class="tag hot">LangChain</span>
-            <span class="tag">ChromaDB</span>
-            <span class="tag">Vector Database</span>
-            <span class="tag">Speech-to-Text</span>
-            <span class="tag">Sarvam API</span>
-            <span class="tag">FFmpeg</span>
-            <span class="tag">Python</span>
-            <span class="tag green">Streamlit</span>
-          </div>
-          <div class="project-links">
-            <a href="https://wavelength-ai-video-assistant.streamlit.app" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-              Live Demo
-            </a>
-            <a href="https://github.com/raghuvendra34/AI-Video-Assistant" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              GitHub
-            </a>
-          </div>
-        </div>
+    <h2>Skills</h2>
+    <ul>
+      <li><b>Languages &amp; core:</b> Python, SQL, DSA (200-day LeetCode streak)</li>
+      <li><b>Machine Learning:</b> scikit-learn, XGBoost, Random Forest, SMOTE / imbalanced data, feature engineering, model evaluation</li>
+      <li><b>Deep Learning &amp; CV:</b> TensorFlow, Keras, CNNs, OpenCV</li>
+      <li><b>GenAI &amp; LLM apps:</b> LangChain, LangGraph, agentic AI, RAG, ChromaDB / FAISS, prompt engineering</li>
+      <li><b>APIs &amp; models:</b> Google Gemini, Mistral AI, Sarvam API, OpenAI Whisper (speech-to-text)</li>
+      <li><b>Data &amp; shipping:</b> Pandas, NumPy, Matplotlib, Streamlit, Git/GitHub</li>
+      <li><b>NLP:</b> TF-IDF, NLTK, text classification, embeddings &amp; semantic search</li>
+    </ul>
 
-        <!-- 3. Plant Disease Prediction -->
-        <div class="project-card green-accent">
-          <div class="project-header">
-            <div class="project-title-wrap">
-              <div class="project-number">03 / Computer Vision</div>
-              <div class="project-title">Plant Disease Prediction</div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-hot">Deep Learning</span>
-            </div>
-          </div>
-          <p class="project-desc">
-            Deep Learning-based Plant Disease Prediction System using CNNs and TensorFlow. Predict plant diseases from
-            leaf images through a Streamlit application with real-time inference and confidence scores. The model can be
-            run locally using the provided setup instructions.
-          </p>
-          <div class="project-tags">
-            <span class="tag hot">TensorFlow</span>
-            <span class="tag hot">CNN</span>
-            <span class="tag hot">Computer Vision</span>
-            <span class="tag">Keras</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Image Classification</span>
-            <span class="tag green">Streamlit</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/raghuvendra34/Plant-Disease-Prediction" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              GitHub
-            </a>
-          </div>
-        </div>
+    <h2>Projects</h2>
+    <ul>
+      <li><b>Nexora — AI Study Assistant.</b> LangGraph + Google Gemini app that routes each request between two MCP servers: a remote server for shared study resources and a local SQLite server for private notes/tasks, so personal data never leaves the user's machine. <a href="https://github.com/raghuvendra34/nexora" target="_blank" rel="noopener">GitHub</a></li>
+      <li><b>Multi-Agent Research System.</b> Four specialised agents (Search, Reader, Writer, Critic) on a real LangGraph StateGraph with a critic revision loop; produces structured research reports. <a href="https://github.com/raghuvendra34/Multi-Agent-Research-System" target="_blank" rel="noopener">GitHub</a> · <a href="https://multi-agent-research-system-cofqqslrvdsoqprsmugb7n.streamlit.app" target="_blank" rel="noopener">Live demo</a></li>
+      <li><b>AI Video Assistant.</b> Upload audio/video → Whisper transcription (chunked for long files) → ChromaDB embeddings → chat with the content via RAG (Mistral AI). <a href="https://github.com/raghuvendra34/AI-Video-Assistant" target="_blank" rel="noopener">GitHub</a> · <a href="https://wavelength-ai-video-assistant.streamlit.app" target="_blank" rel="noopener">Live demo</a></li>
+      <li><b>OncoGuide.</b> Medical-report assistant: OCR extracts text from scanned hospital reports, then RAG (FAISS + Gemini) answers questions and simplifies findings. <a href="https://github.com/raghuvendra34/OncoGuide-AI" target="_blank" rel="noopener">GitHub</a></li>
+      <li><b>Customer Churn Prediction.</b> Decision Tree / Random Forest / XGBoost with SMOTE; fixing train-only SMOTE leakage lifted churn recall 0.47 → 0.58 (accuracy 0.78). <a href="https://github.com/raghuvendra34/Customer-Churn-Prediction" target="_blank" rel="noopener">GitHub</a> · <a href="https://customer-churn-prediction-2ydsrssrvaql6dqkexoj98.streamlit.app" target="_blank" rel="noopener">Live demo</a></li>
+      <li><b>Plant Disease Prediction.</b> CNN (TensorFlow/Keras) trained on PlantVillage — 54,305 images, 38 classes, 86.0% validation accuracy; Streamlit app with real-time inference. <a href="https://github.com/raghuvendra34/Plant-Disease-Prediction" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
 
-        <!-- 3. Customer Churn Prediction -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title-wrap">
-              <div class="project-number">04 / Business ML</div>
-              <div class="project-title">Customer Churn Prediction</div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-live">Live</span>
-            </div>
-          </div>
-          <p class="project-desc">
-            End-to-end customer churn prediction system built using Decision Tree, Random Forest, and XGBoost. Applied
-            SMOTE for handling class imbalance and deployed an interactive Streamlit application for real-time
-            predictions.
-          </p>
-          <div class="project-tags">
-            <span class="tag hot">XGBoost</span>
-            <span class="tag">Random Forest</span>
-            <span class="tag">SMOTE</span>
-            <span class="tag">Classification</span>
-            <span class="tag">Feature Engineering</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag green">Streamlit</span>
-          </div>
-          <div class="project-links">
-            <a href="https://customer-churn-prediction-2ydsrssrvaql6dqkexoj98.streamlit.app/" target="_blank"
-              class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-              Live Demo
-            </a>
-            <a href="https://github.com/raghuvendra34/Customer-Churn-Prediction" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              GitHub
-            </a>
-          </div>
-        </div>
+    <h2>Experience &amp; Achievements</h2>
+    <ul>
+      <li>Fresher — no formal roles yet; all experience is project-based, public and deployed (open-source, own GitHub).</li>
+      <li>200-day streak on LeetCode's Daily Coding Challenge (Oct 2026).</li>
+      <li>Built a dual-MCP (remote + local) architecture for privacy-preserving AI apps (Nexora).</li>
+      <li>Debugged a real ML evaluation bug — SMOTE applied before the split — and re-ran the full pipeline honestly.</li>
+      <li>6 featured AI/ML &amp; GenAI projects with public code on GitHub — 3 with live demos.</li>
+    </ul>
 
-        <!-- 4. Movie Recommendation System -->
-        <div class="project-card green-accent">
-          <div class="project-header">
-            <div class="project-title-wrap">
-              <div class="project-number">05 / NLP</div>
-              <div class="project-title">Movie Recommendation System</div>
-            </div>
-            <div class="project-badges">
-              <span class="badge badge-live">Live</span>
-            </div>
-          </div>
-          <p class="project-desc">
-            Content-Based Movie Recommendation System using Python, Scikit-learn, NLP, TF-IDF, Cosine Similarity, and
-            Streamlit.
-          </p>
-          <div class="project-tags">
-            <span class="tag hot">NLP</span>
-            <span class="tag">TF-IDF</span>
-            <span class="tag">Cosine Similarity</span>
-            <span class="tag">Recommendation Systems</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag green">Streamlit</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/raghuvendra34/Movie-Recommendation-System" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-              Live Demo
-            </a>
-            <a href="https://github.com/raghuvendra34/Movie-Recommendation-System" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              GitHub
-            </a>
-          </div>
-        </div>
+    <h2>Education</h2>
+    <p>VIT Bhopal University — B.Tech, Artificial Intelligence &amp; Machine Learning (2023–2027, final year).</p>
 
-      </div>
-    </div>
-  </section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:raghuvendrakumar34@gmail.com">raghuvendrakumar34@gmail.com</a><br>
+       GitHub: <a href="https://github.com/raghuvendra34" target="_blank" rel="noopener">github.com/raghuvendra34</a><br>
+       LinkedIn: <a href="https://www.linkedin.com/in/raghuvendra-kumar-76919128a/" target="_blank" rel="noopener">linkedin.com/in/raghuvendra-kumar-76919128a</a><br>
+       Location: Bhopal, India · open to relocation &amp; remote</p>
+  </div>
+</main>
 
+<script>
+/* Watchdog: if the 3D engine (CDN) hangs or fails, never leave a visitor
+   staring at a black page — fall back to the simple page automatically. */
+window.__mcWatch = setTimeout(function(){
+  if(!window.__mcBooted){
+    var s = document.getElementById('simplePage'); if(s) s.classList.add('on');
+    var h = document.getElementById('hud'); if(h) h.style.display = 'none';
+    var l = document.getElementById('loading'); if(l) l.classList.remove('on');
+  }
+}, 5000);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+<script>
+/* ================================================================
+   RAGHUVENDRA KUMAR — MINECRAFT PORTFOLIO
+   Sections: 1 DATA · 2 AUDIO · 3 TEXTURES · 4 VOXEL WORLD ·
+             5 BIOMES · 6 INTERACTION · 7 TRANSITIONS/UI · 8 INIT
+   Original procedural assets only — inspired by, not copied from,
+   any game's textures.
+   ================================================================ */
+'use strict';
 
-  <!-- ── OTHER PROJECTS ── -->
-  <section id="other-projects">
-    <div class="container">
-      <p class="section-label">Additional Projects</p>
-      <h2 class="section-title">Other Projects</h2>
+/* ==================== 1. CONTENT DATA ==================== */
+const ME = {
+  name: 'Raghuvendra Kumar',
+  role: 'AI/ML Engineer & Data Scientist',
+  email: 'raghuvendrakumar34@gmail.com',
+  github: 'https://github.com/raghuvendra34',
+  linkedin: 'https://www.linkedin.com/in/raghuvendra-kumar-76919128a/',
+  resume: 'Resume.pdf'
+};
 
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-title">Diabetes Prediction</div>
-          <p class="project-desc">Machine Learning model for predicting diabetes risk using patient health metrics and
-            classification algorithms.</p>
-        </div>
+const SKILLS = [
+  { ore:'diamond',  name:'Python',           tag:'CORE · TOP SKILL', detail:'My primary language for everything — ML pipelines, LLM apps, data work. Used throughout 3 years of coursework and in every project below.' },
+  { ore:'diamond',  name:'LangGraph',        tag:'AGENTIC AI',       detail:'Real StateGraph workflows with conditional edges and critic loops — see the Multi-Agent Research System and Nexora.' },
+  { ore:'emerald',  name:'RAG Systems',      tag:'RETRIEVAL',        detail:'Chunking, embeddings, ChromaDB (persistent) vs FAISS (in-memory speed), semantic search, grounded Q&A over documents, audio and video.' },
+  { ore:'gold',     name:'Machine Learning', tag:'scikit-learn · XGBoost', detail:'Classification, feature engineering, SMOTE for imbalanced data, honest evaluation — including catching my own SMOTE leakage bug and fixing it (churn recall 0.47 → 0.58).' },
+  { ore:'gold',     name:'LLM APIs',         tag:'Gemini · Mistral · Sarvam', detail:'Gemini 2.5 Flash, Mistral AI, Sarvam (saaras for Indic speech), OpenAI Whisper for transcription. Built apps that survive free-tier rate limits.' },
+  { ore:'redstone', name:'MCP & Tools',      tag:'MODEL CONTEXT PROTOCOL', detail:'Dual-server MCP architecture in Nexora: remote HTTP server for shared resources, local stdio + SQLite server so personal data stays on-device.' },
+  { ore:'iron',     name:'Deep Learning',    tag:'TensorFlow · Keras', detail:'CNNs for image classification — PlantVillage, 54,305 images / 38 classes, 86.0% validation accuracy. OpenCV for the CV pipeline.' },
+  { ore:'lapis',    name:'Data & NLP',       tag:'Pandas · SQL · TF-IDF', detail:'Pandas/NumPy/Matplotlib for analysis, SQL for querying, TF-IDF + NLTK for text classification (fake-news detector, movie recommender).' },
+  { ore:'coal',     name:'CS Fundamentals',  tag:'DSA · LEETCODE',   detail:'200-day streak on LeetCode\u2019s Daily Coding Challenge (Oct 2026). Data structures and algorithms in Java + Python.' }
+];
 
-        <div class="project-card">
-          <div class="project-title">Credit Card Fraud Detection</div>
-          <p class="project-desc">Fraud detection system built on highly imbalanced transaction data using advanced
-            preprocessing and classification techniques.</p>
-        </div>
+const PROJECTS = [
+  { id:'nexora', name:'Nexora — AI Study Assistant', icon:'book',
+    grid:['gem','server','book','db','gem','route','chat','db','scroll'],
+    desc:'Routes every request to the right tool: a remote MCP server holds shared study resources (questions, progress, leaderboard) while a local MCP server + SQLite keeps personal notes and tasks on the user\u2019s own machine. Privacy by architecture, not by promise.',
+    tech:['LangGraph','Google Gemini','MCP (HTTP + stdio)','SQLite','Streamlit'],
+    metric:'Privacy by architecture — personal data never leaves the device',
+    github:'https://github.com/raghuvendra34/nexora', live:null },
+  { id:'agents', name:'Multi-Agent Research System', icon:'brain',
+    grid:['gem','search','book','route','edit','gem','eye','scroll','chat'],
+    desc:'Four specialised agents — Search, Reader, Writer, Critic — wired into a real LangGraph StateGraph. The Critic scores each draft; below 7/10 it loops back for revision (max 2 rounds) before the report ships.',
+    tech:['LangGraph','Gemini 2.5 Flash','Web scraping','Streamlit'],
+    metric:'Critic loop — drafts scoring below 7/10 are revised automatically',
+    github:'https://github.com/raghuvendra34/Multi-Agent-Research-System', live:'https://multi-agent-research-system-cofqqslrvdsoqprsmugb7n.streamlit.app' },
+  { id:'video', name:'AI Video Assistant', icon:'video',
+    grid:['video','wave','db','chunk','gem','db','chat','wave','scroll'],
+    desc:'Upload audio/video → Whisper transcribes (chunked, so long files work) → transcripts are embedded into ChromaDB → chat with the content. RAG with Mistral AI for summaries, insights and Q&A.',
+    tech:['OpenAI Whisper','ChromaDB','Mistral AI','RAG','Streamlit'],
+    metric:'Long files handled — chunked transcription + persistent vector store',
+    github:'https://github.com/raghuvendra34/AI-Video-Assistant', live:'https://wavelength-ai-video-assistant.streamlit.app' },
+  { id:'onco', name:'OncoGuide — Medical Report AI', icon:'heart',
+    grid:['scroll','eye','db','db','gem','gem','chat','scroll','heart'],
+    desc:'Hospital reports are usually scans — images with no text layer. OncoGuide runs OCR to extract the text, indexes it with FAISS, and uses Gemini RAG to answer questions and explain findings in plain language.',
+    tech:['OCR','FAISS','Gemini','RAG','Streamlit'],
+    metric:'Reads scanned reports that have no text layer at all',
+    github:'https://github.com/raghuvendra34/OncoGuide-AI', live:null },
+  { id:'churn', name:'Customer Churn Prediction', icon:'chart',
+    grid:['db','chart','tree','scale','tree','chart','gem','scale','scroll'],
+    desc:'7,043 customers, 26.5% churn. Decision Tree / Random Forest / XGBoost compared properly. The interesting part: my first model leaked (SMOTE before the split) — I found it, refit correctly, and churn recall rose 0.47 → 0.58.',
+    tech:['scikit-learn','XGBoost','SMOTE','Pandas'],
+    metric:'Churn recall 0.47 → 0.58 after fixing SMOTE leakage · accuracy 0.78',
+    github:'https://github.com/raghuvendra34/Customer-Churn-Prediction', live:'https://customer-churn-prediction-2ydsrssrvaql6dqkexoj98.streamlit.app' },
+  { id:'plant', name:'Plant Disease Prediction', icon:'leaf',
+    grid:['leaf','eye','brain','leaf','db','brain','eye','leaf','scroll'],
+    desc:'CNN trained on PlantVillage (54,305 leaf images, 38 classes) reaching 86.0% validation accuracy, deployed as a Streamlit app with real-time inference and confidence scores.',
+    tech:['TensorFlow','Keras','CNN','OpenCV'],
+    metric:'86.0% validation accuracy · 54,305 images · 38 classes',
+    github:'https://github.com/raghuvendra34/Plant-Disease-Prediction', live:null }
+];
 
-        <div class="project-card">
-          <div class="project-title">Fake News Detection</div>
-          <p class="project-desc">NLP-based text classification model using TF-IDF vectorization and Logistic Regression
-            for identifying fake news articles.</p>
-        </div>
+const ADVANCEMENTS = [
+  { id:'leetc',  icon:'coal',    title:'Serious Dedication',  desc:'200-day LeetCode Daily Challenge streak', need:'Always unlocked — earned Oct 2026', always:true },
+  { id:'mcp',    icon:'emerald', title:'We Need To Go Deeper', desc:'Built a dual-MCP (remote + local) AI architecture — Nexora', always:true },
+  { id:'recall', icon:'gold',    title:'Take Aim',             desc:'Fixed a SMOTE leakage bug; churn recall 0.47 → 0.58', always:true },
+  { id:'cnn',    icon:'iron',    title:'A Balanced Diet',      desc:'CNN at 86.0% on 38-class PlantVillage (54,305 images)', always:true },
+  { id:'visit3', icon:'diamond', title:'Diamonds!',            desc:'Visit 3 different worlds in this portfolio', need:'section', count:3 },
+  { id:'visit6', icon:'portal',  title:'The End?',             desc:'Visit all 6 worlds', need:'section', count:6 },
+  { id:'craft',  icon:'craft',   title:'Benchmarking',         desc:'Open a project recipe at the Crafting Table', need:'craft' },
+  { id:'hire',   icon:'apple',   title:'How Did We Get Here?', desc:'Reach out — open the Contact portal in The End', need:'contact' }
+];
 
-        <div class="project-card">
-          <div class="project-title">Mine vs Rock Prediction</div>
-          <p class="project-desc">Binary classification model trained on sonar signal data to distinguish mines from
-            rocks using machine learning techniques.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+const TIPS = [
+  'Tip: hire this developer',
+  'Tip: press 1–6 to travel between worlds',
+  'Tip: diamonds in the Mine are his top skills',
+  'Tip: every recipe at the Crafting Table is a real, shipped project',
+  'Tip: the golden apple in the hotbar is the fastest hello',
+  'Tip: click the villager — he has things to say',
+  'Tip: in a hurry? “Simple page” button, top right'
+];
 
-  <!-- ── PROFILES ── -->
+const DIALOGUE = [
+  'Hrmm. A visitor. I am the keeper of this village — and of Raghuvendra\u2019s story.',
+  'He is a final-year AI & ML engineer at VIT Bhopal. He builds ML models and LLM applications — and he actually ships them: live demos, public code.',
+  'His rule, learned the hard way: know WHY every line of code exists, not just what it does. Ask his projects — each one can explain itself.',
+  'Right now he is looking for a full-time AI/ML or Data Scientist role. Remote, or relocate — he has said yes to both.',
+  'Take the portal when you are ready. The Mine holds his skills, the Crafting Table his work. Hrmm.'
+];
 
-  <section id="contact">
-    <div class="container">
-      <p class="section-label">Find Me Online</p>
-      <h2 class="section-title">Let's connect</h2>
-      <div class="profiles-row">
-        <a href="https://github.com/raghuvendra34" target="_blank" class="profile-card">
-          <div class="profile-icon" style="background:#f0f2f8;">
-            <svg viewBox="0 0 24 24" fill="#0f1117" width="22" height="22">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-          </div>
-          <div>
-            <h3>GitHub</h3>
-            <p>raghuvendra34 · 7+ repos</p>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/raghuvendra-kumar-76919128a" target="_blank" class="profile-card">
-          <div class="profile-icon" style="background:#eef4ff;">
-            <svg viewBox="0 0 24 24" fill="#0a66c2" width="22" height="22">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-          </div>
-          <div>
-            <h3>LinkedIn</h3>
-            <p>Raghuvendra Kumar</p>
-          </div>
-        </a>
-        <a href="https://leetcode.com/u/raghuvendra_34/" target="_blank" class="profile-card">
-          <div class="profile-icon" style="background:#fff8ee;">
-            <svg viewBox="0 0 24 24" fill="#FFA116" width="22" height="22">
-              <path
-                d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-            </svg>
-          </div>
-          <div>
-            <h3>LeetCode</h3>
-            <p>raghuvendra_34 · DSA</p>
-          </div>
-        </a>
-        <a href="mailto:raghuvendrakumar34@gmail.com" class="profile-card">
-          <div class="profile-icon" style="background:#fff0f0;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2" width="22" height="22">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-          </div>
-          <div>
-            <h3>Email</h3>
-            <p>raghuvendrakumar34@gmail.com</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+const SECTIONS = [
+  { id:'spawn',    name:'Spawn',        biome:'Overworld — Spawn',   tex:'grass',  key:'1' },
+  { id:'village',  name:'About',        biome:'The Village',         tex:'planks', key:'2' },
+  { id:'mine',     name:'Skills',       biome:'The Mine — Skills',   tex:'oreDiamond', key:'3' },
+  { id:'crafting', name:'Projects',     biome:'Crafting Table',      tex:'craftSide', key:'4' },
+  { id:'nether',   name:'Advancements', biome:'The Nether',          tex:'netherrack', key:'5' },
+  { id:'end',      name:'Contact',      biome:'The End',             tex:'endstone', key:'6' }
+];
 
-  <footer>
-    <p>Designed & built by <strong>Raghuvendra Kumar</strong> · VIT Bhopal · B.Tech AIML · <a
-        href="mailto:raghuvendrakumar34@gmail.com">raghuvendrakumar34@gmail.com</a></p>
-  </footer>
+/* ==================== 2. AUDIO (WebAudio, all synthesized) ==================== */
+const AudioX = {
+  ctx:null, master:null, hum:null, muted:false,
+  init(){ if(this.ctx) return;
+    try{
+      this.ctx = new (window.AudioContext||window.webkitAudioContext)();
+      this.master = this.ctx.createGain(); this.master.gain.value = .5; this.master.connect(this.ctx.destination);
+      this.startHum();
+    }catch(e){ /* audio unavailable — stay silent */ }
+  },
+  startHum(){ if(!this.ctx || this.hum) return;
+    const o = this.ctx.createOscillator(), g = this.ctx.createGain(), lfo = this.ctx.createOscillator(), lg = this.ctx.createGain();
+    o.type='sine'; o.frequency.value = 55; g.gain.value = .012;
+    lfo.frequency.value = .13; lg.gain.value = .006; lfo.connect(lg); lg.connect(g.gain);
+    o.connect(g); g.connect(this.master); o.start(); lfo.start(); this.hum = o;
+  },
+  tone(f0,f1,dur,type,vol,when){ if(!this.ctx||this.muted) return;
+    const t = this.ctx.currentTime + (when||0), o = this.ctx.createOscillator(), g = this.ctx.createGain();
+    o.type = type||'square'; o.frequency.setValueAtTime(f0,t); o.frequency.exponentialRampToValueAtTime(Math.max(f1,1),t+dur);
+    g.gain.setValueAtTime(vol||.12,t); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g); g.connect(this.master); o.start(t); o.stop(t+dur+.02);
+  },
+  noise(dur, fFrom, fTo, vol){ if(!this.ctx||this.muted) return;
+    const t = this.ctx.currentTime, len = Math.max(1,(dur*this.ctx.sampleRate)|0),
+      buf = this.ctx.createBuffer(1,len,this.ctx.sampleRate), d = buf.getChannelData(0);
+    for(let i=0;i<len;i++) d[i] = Math.random()*2-1;
+    const src = this.ctx.createBufferSource(); src.buffer = buf;
+    const flt = this.ctx.createBiquadFilter(); flt.type='bandpass'; flt.Q.value = 1.1;
+    flt.frequency.setValueAtTime(fFrom,t); flt.frequency.exponentialRampToValueAtTime(fTo,t+dur);
+    const g = this.ctx.createGain(); g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    src.connect(flt); flt.connect(g); g.connect(this.master); src.start(t); src.stop(t+dur+.02);
+  },
+  click(){ this.tone(700,300,.06,'square',.08); },
+  breakBlock(){ this.noise(.16,900,300,.20); this.tone(180,60,.1,'triangle',.1); },
+  pop(){ this.tone(500,900,.09,'sine',.14); },
+  portal(){ this.noise(1.0,300,2600,.16); this.tone(80,420,1.0,'sine',.07); this.tone(1200,2400,.9,'sine',.03,.1); },
+  chime(){ this.tone(1318,1318,.16,'sine',.12); this.tone(1760,1760,.3,'sine',.12,.12); },
+  talk(){ this.tone(220+Math.random()*60,180,.07,'square',.05); },
+  setMuted(m){ this.muted = m; if(this.master) this.master.gain.value = m ? 0 : .5; }
+};
 
+/* ==================== 3. PROCEDURAL TEXTURES (16×16, original) ==================== */
+function rng(seed){ let a = seed>>>0; return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function mkCanvas(w,h){ const c=document.createElement('canvas'); c.width=w||16; c.height=h||16; return c; }
+function px(ctx,x,y,col){ ctx.fillStyle=col; ctx.fillRect(x|0,y|0,1,1); }
+function speckle(ctx,pal,r,n,sz){ for(let i=0;i<(n||110);i++){ ctx.fillStyle=pal[(r()*pal.length)|0]; const s=sz&&r()<.25?2:1; ctx.fillRect((r()*16)|0,(r()*16)|0,s,s);} }
+function baseFill(ctx,col){ ctx.fillStyle=col; ctx.fillRect(0,0,16,16); }
+
+const GRASS_GREENS=['#6abe30','#63b32c','#71c23a','#58a52a','#79c544'];
+const DIRT_BROWNS=['#8a5f3c','#7d5535','#96683f','#6f4c2e','#a1713f'];
+const STONE_GRAYS=['#7d7d7d','#757575','#868686','#6d6d6d','#909090'];
+function orePainter(gemCols, seed){
+  return function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#7d7d7d'); speckle(x,STONE_GRAYS,r,120);
+    const clusters=[[2,3],[10,2],[5,9],[11,11],[7,5]];
+    clusters.forEach(function(cl){ const cx=cl[0],cy=cl[1];
+      px(x,cx,cy,gemCols[0]); px(x,cx+1,cy,gemCols[1]); px(x,cx,cy+1,gemCols[1]); px(x,cx+1,cy+1,gemCols[2]); px(x,cx+2,cy+1,gemCols[0]); });
+    return c; };
+}
+const PAINTERS = {
+  grassTop:  function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#63b32c'); speckle(x,GRASS_GREENS,r,150); return c; },
+  dirt:      function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#8a5f3c'); speckle(x,DIRT_BROWNS,r,130); speckle(x,['#5d3f24'],r,14,1); return c; },
+  grassSide: function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#8a5f3c'); speckle(x,DIRT_BROWNS,r,120);
+    for(let i=0;i<16;i++){ const depth=3+((r()*3)|0); for(let j=0;j<depth;j++) px(x,i,j,GRASS_GREENS[(r()*GRASS_GREENS.length)|0]); px(x,i,depth,'#58a52a'); } return c; },
+  stone:     function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#7d7d7d'); speckle(x,STONE_GRAYS,r,140); speckle(x,['#5c5c5c'],r,10,1); return c; },
+  planks:    function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#a0824f'); speckle(x,['#9a7a48','#ab8c56','#8f7143'],r,90);
+    [0,4,8,12,15].forEach(function(y){ ctx_line(x,y); }); function ctx_line(x,y){ x.fillStyle='#6e5836'; x.fillRect(0,y,16,1);} 
+    [3,11].forEach(function(nx){ [2,10].forEach(function(ny){ px(x,nx,ny,'#5d4a2c'); }); }); return c; },
+  logSide:   function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#6b5433'); for(let i=0;i<16;i++){ const col=['#5d4729','#77603a','#665232'][(r()*3)|0]; x.fillStyle=col; x.fillRect(i,0,1,16);} speckle(x,['#4e3a20'],r,24); return c; },
+  logTop:    function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#b09a5e'); [6,4,2].forEach(function(rad){ x.strokeStyle='#8a7643'; x.strokeRect(8-rad,8-rad,rad*2,rad*2); }); x.strokeStyle='#6b5433'; x.strokeRect(0,0,16,16); return c; },
+  sand:      function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#dcd29b'); speckle(x,['#d3c68d','#e6dcab','#c9bb7e'],r,110); return c; },
+  leaves:    function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#3e7d24'); speckle(x,['#356e1e','#478c2a','#2c5e18','#529c33'],r,160); speckle(x,['#1e4210'],r,26); return c; },
+  bookshelf: function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#a0824f'); speckle(x,['#9a7a48'],r,40);
+    const cols=['#b03a2e','#2e6db0','#3f9e4d','#c9a227','#7b2ff7','#d1d1d1'];
+    [1,9].forEach(function(y0){ for(let i=1;i<15;i+=2){ x.fillStyle=cols[(r()*cols.length)|0]; x.fillRect(i,y0,1+((r()*2)|0),6);} x.fillStyle='#6e5836'; x.fillRect(0,y0+7,16,1); }); return c; },
+  craftTop:  function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#a0824f'); speckle(x,['#9a7a48','#ab8c56'],r,60);
+    x.strokeStyle='#5d4a2c'; x.lineWidth=1; for(let i=0;i<=3;i++){ x.strokeRect(i*5.33+.5,.5,0,15); x.strokeRect(.5,i*5.33+.5,15,0);} x.strokeStyle='#6e5836'; x.strokeRect(0,0,16,16); return c; },
+  craftSide: function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#a0824f'); speckle(x,['#9a7a48','#ab8c56'],r,60);
+    x.fillStyle='#6e5836'; x.fillRect(0,0,16,2); x.fillRect(0,14,16,2);
+    x.fillStyle='#3f3f3f'; x.fillRect(3,5,7,2); x.fillRect(9,4,2,5); x.fillStyle='#c0c0c0'; x.fillRect(11,8,3,2); return c; },
+  netherrack:function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#6e2727'); speckle(x,['#5d1f1f','#7d2f2a','#4e1818','#8a3a30'],r,150); return c; },
+  basalt:    function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#4a4a52'); for(let i=0;i<16;i+=3){ x.fillStyle=['#3d3d44','#55555f'][(r()*2)|0]; x.fillRect(i,0,2,16);} speckle(x,['#2e2e34'],r,30); return c; },
+  glowstone: function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#c9a227'); speckle(x,['#fcee6e','#e8c93d','#a8821c'],r,120); speckle(x,['#fff6a8'],r,20); return c; },
+  obsidian:  function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#17111f'); speckle(x,['#241a33','#100b18','#2e2142'],r,80); speckle(x,['#4b3670'],r,8); return c; },
+  endstone:  function(r){ const c=mkCanvas(),x=c.getContext('2d'); baseFill(x,'#dde5a0'); speckle(x,['#cfd68c','#e8eeb2','#bcc47c'],r,130); speckle(x,['#aab670'],r,16,1); return c; },
+  oreDiamond: orePainter(['#5ff2e0','#33d9c0','#a8fff2'], 11),
+  oreEmerald: orePainter(['#3ddc5a','#27ae46','#8affa1'], 12),
+  oreGold:    orePainter(['#fcee6e','#f5d13d','#fff6a8'], 13),
+  oreRedstone:orePainter(['#ff2a1a','#d81a0c','#ff7a5c'], 14),
+  oreIron:    orePainter(['#d8af93','#c39a7b','#e8cdb2'], 15),
+  oreLapis:   orePainter(['#3b6fd4','#2a4fa0','#7ba3e8'], 16),
+  oreCoal:    orePainter(['#2b2b2b','#1c1c1c','#454545'], 17)
+};
+/* Animated fluid / portal frames */
+function fluidFrame(base, hi, seed, phase){
+  const r = rng(seed), c = mkCanvas(), x = c.getContext('2d'); baseFill(x, base);
+  for(let i=0;i<7;i++){ const y=((i*3+phase*2)%16); x.fillStyle=hi; x.globalAlpha=.55;
+    for(let j=0;j<4;j++) x.fillRect((r()*14)|0, (y+j*1)%16, 2+((r()*4)|0), 1); }
+  x.globalAlpha=1; speckle(x,[hi],r,26); return c;
+}
+function portalCanvasDraw(x, t, w, h){
+  for(let i=0;i<w;i++) for(let j=0;j<h;j++){
+    const v = Math.sin(i*.9 + t*1.7 + Math.sin(j*.55 + t)) + Math.sin(j*.8 - t*1.3);
+    x.fillStyle = v>1.1 ? '#d9a5ff' : v>.35 ? '#a64dff' : v>-.6 ? '#7b2ff7' : '#4b0f9e';
+    x.fillRect(i,j,1,1);
+  }
+}
+
+/* Tiny pixel icons (hotbar / recipes / advancements) */
+function iconCanvas(kind){
+  const c = mkCanvas(), x = c.getContext('2d'), r = rng(kind.length*131+7);
+  const P = function(a,b,col){ px(x,a,b,col); };
+  const box = function(a,b,w,h,col){ x.fillStyle=col; x.fillRect(a,b,w,h); };
+  switch(kind){
+    case 'apple': box(7,1,2,2,'#6b4a2a'); P(8,3,'#3e7d24');P(9,3,'#3e7d24');P(7,3,'#3e7d24');
+      speckle(x,['#f7c948','#e8a90c','#ffd968'],r,0); x.fillStyle='#f7c948'; x.beginPath(); x.arc(8,9,5.4,0,7); x.fill();
+      speckle(x,['#e8a90c','#ffd968','#fff3b0'],r,40); P(5,6,'#fff3b0');P(5,7,'#fff3b0'); break;
+    case 'paper': box(3,1,10,14,'#e8e8e8'); box(3,1,10,1,'#bdbdbd'); for(let i=0;i<5;i++) box(5,4+i*2,6,1,'#9db2d5'); break;
+    case 'book': box(3,2,10,12,'#7a4a21'); box(4,2,8,12,'#a33527'); box(5,3,6,10,'#e8dcc0'); box(6,5,4,1,'#555'); box(6,7,4,1,'#555'); box(6,9,4,1,'#555'); break;
+    case 'brain': x.fillStyle='#e88bb0'; x.beginPath(); x.arc(8,8,5.6,0,7); x.fill(); speckle(x,['#d96f9c','#f2a7c3'],r,50); P(7,3,'#c95b8a');P(5,7,'#c95b8a');P(10,9,'#c95b8a'); break;
+    case 'video': box(1,4,11,8,'#3f3f3f'); box(12,6,3,4,'#3f3f3f'); P(5,6,'#fff');P(5,7,'#fff');P(5,8,'#fff');P(6,7,'#fff'); box(2,3,9,1,'#c0392b'); break;
+    case 'heart': x.fillStyle='#d42a2a'; [[3,4],[4,3],[5,3],[9,3],[10,3],[11,4]].forEach(function(p){P(p[0],p[1],'#d42a2a');});
+      box(3,5,9,4,'#d42a2a'); box(4,9,7,1,'#d42a2a'); box(5,10,5,1,'#d42a2a'); box(6,11,3,1,'#d42a2a'); P(7,12,'#d42a2a'); P(4,5,'#ff8a8a'); break;
+    case 'chart': box(2,13,12,1,'#555'); box(3,8,2,5,'#3b6fd4'); box(7,5,2,8,'#3ddc5a'); box(11,3,2,10,'#f5d13d'); break;
+    case 'leaf': x.fillStyle='#3e7d24'; x.beginPath(); x.ellipse(8,8,5.5,3.8,.7,0,7); x.fill(); speckle(x,['#478c2a','#2c5e18'],r,40); box(4,11,7,1,'#2c5e18'); break;
+    case 'gem': P(8,2,'#a8fff2'); box(5,3,6,2,'#5ff2e0'); box(4,5,8,3,'#33d9c0'); box(5,8,6,2,'#5ff2e0'); box(6,10,4,2,'#33d9c0'); box(7,12,2,1,'#a8fff2'); P(5,4,'#eafffb'); break;
+    case 'server': box(3,2,10,5,'#4a4a52'); box(3,9,10,5,'#4a4a52'); P(5,4,'#3ddc5a');P(5,11,'#3ddc5a'); box(10,4,2,1,'#8b8b8b'); box(10,11,2,1,'#8b8b8b'); break;
+    case 'db': x.fillStyle='#7d8ca3'; x.beginPath(); x.ellipse(8,4,5,2,0,0,7); x.fill(); box(3,4,10,8,'#7d8ca3'); x.fillStyle='#5d6c83'; x.beginPath(); x.ellipse(8,12,5,2,0,0,7); x.fill(); x.strokeStyle='#46536a'; x.beginPath(); x.ellipse(8,8,5,2,0,0,7); x.stroke(); break;
+    case 'route': P(3,12,'#f5d13d');P(4,11,'#f5d13d');P(5,10,'#f5d13d');P(6,9,'#f5d13d');P(7,8,'#f5d13d');P(8,7,'#f5d13d');P(9,6,'#f5d13d');P(10,5,'#f5d13d'); box(11,3,3,3,'#d42a2a'); P(12,2,'#d42a2a'); break;
+    case 'chat': box(2,3,12,8,'#e8e8e8'); box(4,11,3,3,'#e8e8e8'); box(4,5,8,1,'#555'); box(4,7,5,1,'#555'); break;
+    case 'scroll': box(4,2,9,12,'#e8dcc0'); box(3,2,11,2,'#b09a5e'); box(3,12,11,2,'#b09a5e'); box(6,6,5,1,'#777'); box(6,8,5,1,'#777'); break;
+    case 'search': x.strokeStyle='#8b8b8b'; x.lineWidth=2; x.beginPath(); x.arc(7,7,4,0,7); x.stroke(); x.strokeStyle='#6b4a2a'; x.beginPath(); x.moveTo(10,10); x.lineTo(14,14); x.stroke(); P(6,5,'#bfe3ff'); break;
+    case 'edit': box(3,11,9,2,'#f5d13d'); P(11,3,'#f5d13d');P(10,4,'#f5d13d');P(5,10,'#e8a90c');P(12,2,'#555'); box(2,13,12,1,'#999'); break;
+    case 'eye': x.fillStyle='#fff'; x.beginPath(); x.ellipse(8,8,6.5,3.6,0,0,7); x.fill(); x.fillStyle='#3b6fd4'; x.beginPath(); x.arc(8,8,2.6,0,7); x.fill(); P(8,8,'#111'); P(7,7,'#fff'); break;
+    case 'wave': [3,6,9,12].forEach(function(wx,i){ box(wx,7-(i%2)*2,1,4+(i%2)*3,'#3b6fd4'); }); box(1,8,14,1,'#9db2d5'); break;
+    case 'chunk': box(2,2,5,5,'#a64dff'); box(9,2,5,5,'#7b2ff7'); box(2,9,5,5,'#7b2ff7'); box(9,9,5,5,'#a64dff'); break;
+    case 'tree': box(7,9,2,5,'#6b4a2a'); x.fillStyle='#3e7d24'; x.beginPath(); x.arc(8,6,4.6,0,7); x.fill(); speckle(x,['#2c5e18','#478c2a'],r,30); break;
+    case 'scale': box(7,2,2,11,'#8b8b8b'); box(3,4,10,1,'#8b8b8b'); P(4,6,'#f5d13d');P(3,7,'#f5d13d');P(5,7,'#f5d13d');P(11,6,'#d42a2a');P(10,7,'#d42a2a');P(12,7,'#d42a2a'); break;
+    case 'speaker': box(2,6,3,4,'#ddd'); P(5,5,'#ddd');P(5,11,'#ddd');P(6,6,'#ddd');P(6,10,'#ddd'); P(9,5,'#80ff20');P(10,8,'#80ff20');P(9,11,'#80ff20'); P(12,4,'#80ff20');P(13,8,'#80ff20');P(12,12,'#80ff20'); break;
+    case 'portal': box(4,1,8,14,'#17111f'); box(6,3,4,10,'#7b2ff7'); speckle(x,['#a64dff','#d9a5ff'],r,26); break;
+    case 'craft': box(2,2,12,12,'#a0824f'); x.strokeStyle='#5d4a2c'; x.strokeRect(4.5,4.5,7,7); x.beginPath(); x.moveTo(7,4); x.lineTo(7,12); x.moveTo(4,8); x.lineTo(12,8); x.stroke(); break;
+    default: box(3,3,10,10,'#c6c6c6');
+  }
+  return c;
+}
+
+/* ==================== 4. VOXEL WORLD + MESHER (with per-vertex AO) ==================== */
+let THREE_OK = typeof THREE !== 'undefined';
+const TEX = {};            // name -> [variant CanvasTextures]
+const FLUID = { water:[], lava:[] };
+let portalTex = null, portalCanvas = null;
+
+function buildTextures(){
+  Object.keys(PAINTERS).forEach(function(name){
+    TEX[name] = [];
+    for(let v=0; v<3; v++){
+      const t = new THREE.CanvasTexture(PAINTERS[name](rng(name.length*977 + v*131 + 17)));
+      t.magFilter = THREE.NearestFilter; t.minFilter = THREE.NearestFilter; t.generateMipmaps = false;
+      t.colorSpace = THREE.SRGBColorSpace; TEX[name].push(t);
+    }
+  });
+  for(let f=0; f<3; f++){
+    const wt = new THREE.CanvasTexture(fluidFrame('#3f76e4','#6ea8ff', 501, f));
+    wt.magFilter = THREE.NearestFilter; wt.minFilter = THREE.NearestFilter; wt.generateMipmaps = false; wt.colorSpace = THREE.SRGBColorSpace;
+    FLUID.water.push(wt);
+    const lt = new THREE.CanvasTexture(fluidFrame('#e25822','#ffb347', 777, f));
+    lt.magFilter = THREE.NearestFilter; lt.minFilter = THREE.NearestFilter; lt.generateMipmaps = false; lt.colorSpace = THREE.SRGBColorSpace;
+    FLUID.lava.push(lt);
+  }
+  portalCanvas = mkCanvas(16,32);
+  portalCanvasDraw(portalCanvas.getContext('2d'), 0, 16, 32);
+  portalTex = new THREE.CanvasTexture(portalCanvas);
+  portalTex.magFilter = THREE.NearestFilter; portalTex.minFilter = THREE.NearestFilter; portalTex.generateMipmaps = false; portalTex.colorSpace = THREE.SRGBColorSpace;
+  // Loading screen dirt background
+  const dirtUrl = PAINTERS.dirt(rng(42)).toDataURL();
+  document.getElementById('loading').style.backgroundImage = 'url(' + dirtUrl + ')';
+}
+
+/* Block type -> face textures. kind: top/side/bottom */
+const BLOCKS = {
+  grass:      { top:'grassTop', side:'grassSide', bottom:'dirt' },
+  dirt:       { all:'dirt' }, sand:{ all:'sand' }, stone:{ all:'stone' },
+  planks:     { all:'planks' }, log:{ top:'logTop', side:'logSide', bottom:'logTop' },
+  leaves:     { all:'leaves' }, bookshelf:{ all:'bookshelf' },
+  craftBlock: { top:'craftTop', side:'craftSide', bottom:'planks' },
+  netherrack: { all:'netherrack' }, basalt:{ all:'basalt' }, glowstone:{ all:'glowstone' },
+  obsidian:   { all:'obsidian' }, endstone:{ all:'endstone' },
+  oreDiamond:{ all:'oreDiamond' }, oreEmerald:{ all:'oreEmerald' }, oreGold:{ all:'oreGold' },
+  oreRedstone:{ all:'oreRedstone' }, oreIron:{ all:'oreIron' }, oreLapis:{ all:'oreLapis' }, oreCoal:{ all:'oreCoal' },
+  water:      { all:'__water' }, lava:{ all:'__lava' }, portal:{ all:'__portal' }
+};
+const OPAQUE = {}; Object.keys(BLOCKS).forEach(function(k){ OPAQUE[k] = (k!=='water' && k!=='portal'); });
+const FACE_SHADE = { top:1.0, bottom:0.5, side:0.78, side2:0.6 };
+const FACES = [
+  { dir:[-1,0,0], kind:'side2', corners:[[0,1,0,0,1],[0,0,0,0,0],[0,1,1,1,1],[0,0,1,1,0]] },
+  { dir:[ 1,0,0], kind:'side2', corners:[[1,1,1,0,1],[1,0,1,0,0],[1,1,0,1,1],[1,0,0,1,0]] },
+  { dir:[0,-1,0], kind:'bottom',corners:[[1,0,1,1,0],[0,0,1,0,0],[1,0,0,1,1],[0,0,0,0,1]] },
+  { dir:[0, 1,0], kind:'top',   corners:[[0,1,1,1,1],[1,1,1,0,1],[0,1,0,1,0],[1,1,0,0,0]] },
+  { dir:[0,0,-1], kind:'side',  corners:[[1,0,0,0,0],[0,0,0,1,0],[1,1,0,0,1],[0,1,0,1,1]] },
+  { dir:[0,0, 1], kind:'side',  corners:[[0,0,1,0,0],[1,0,1,1,0],[0,1,1,0,1],[1,1,1,1,1]] }
+];
+const AO_CURVE = [0.42, 0.64, 0.84, 1.0];
+function hash3(x,y,z){ let h = (x*374761393 + y*668265263 + z*1274126177) ^ 0x5bf03635; h = (h ^ (h>>13)) * 1274126177; return ((h ^ (h>>16)) >>> 0); }
+
+function meshWorld(world){
+  const buckets = {};   // key -> {tex, transparent, arrays}
+  function bucket(key, texName, variant, transparent){
+    if(!buckets[key]){
+      let mat;
+      if(texName==='__water') mat = new THREE.MeshBasicMaterial({ map:FLUID.water[0], transparent:true, opacity:.8, depthWrite:false, vertexColors:true });
+      else if(texName==='__lava') mat = new THREE.MeshBasicMaterial({ map:FLUID.lava[0], vertexColors:true });
+      else if(texName==='__portal') mat = new THREE.MeshBasicMaterial({ map:portalTex, vertexColors:true, side:THREE.DoubleSide });
+      else mat = new THREE.MeshBasicMaterial({ map:TEX[texName][variant], vertexColors:true });
+      buckets[key] = { mat:mat, pos:[], uv:[], col:[], idx:[], n:0 };
+    }
+    return buckets[key];
+  }
+  function solid(x,y,z){ const t = world.get(x+','+y+','+z); return t ? !!OPAQUE[t] : false; }
+
+  world.forEach(function(type, key){
+    const p = key.split(',').map(Number), x=p[0], y=p[1], z=p[2], def = BLOCKS[type];
+    if(!def) return;
+    FACES.forEach(function(f){
+      const nx=x+f.dir[0], ny=y+f.dir[1], nz=z+f.dir[2];
+      const nt = world.get(nx+','+ny+','+nz);
+      if(nt && OPAQUE[nt]) return;                       // face hidden by opaque neighbour
+      if(nt === type && (type==='water')) return;          // merge water surface
+      const texName = def[f.kind] || def.all || def.side || def.top;
+      const variant = hash3(x,y,z) % 3;
+      const bKey = texName + '|' + (texName.indexOf('__')===0 ? 0 : variant);
+      const b = bucket(bKey, texName, variant, type==='water');
+      const shade = FACE_SHADE[f.kind];
+      // tangent axes for AO
+      const axis = f.dir[0]!==0 ? 0 : f.dir[1]!==0 ? 1 : 2;
+      const t1 = (axis+1)%3, t2 = (axis+2)%3;
+      const aos = [];
+      f.corners.forEach(function(c){
+        const vx=x+c[0], vy=y+c[1], vz=z+c[2];
+        b.pos.push(vx,vy,vz); b.uv.push(c[3],c[4]);
+        // AO neighbours: cell in front of the face, offset along tangents
+        const base=[x+f.dir[0], y+f.dir[1], z+f.dir[2]];
+        const o1=[0,0,0], o2=[0,0,0];
+        o1[t1] = c[t1]===1 ? 1 : -1; o2[t2] = c[t2]===1 ? 1 : -1;
+        const s1 = solid(base[0]+o1[0], base[1]+o1[1], base[2]+o1[2]) ? 1:0;
+        const s2 = solid(base[0]+o2[0], base[1]+o2[1], base[2]+o2[2]) ? 1:0;
+        const cc = solid(base[0]+o1[0]+o2[0], base[1]+o1[1]+o2[1], base[2]+o1[2]+o2[2]) ? 1:0;
+        const ao = (s1 && s2) ? 0 : 3-(s1+s2+cc);
+        aos.push(ao);
+        const br = shade * AO_CURVE[ao];
+        b.col.push(br, br, br);
+      });
+      const n=b.n;
+      if(aos[0]+aos[3] >= aos[1]+aos[2]) b.idx.push(n,n+1,n+2, n+2,n+1,n+3);
+      else b.idx.push(n+1,n+3,n, n, n+3,n+2);
+      b.n += 4;
+    });
+  });
+
+  const group = new THREE.Group(); const fluidMats = { water:[], lava:[] };
+  Object.keys(buckets).forEach(function(k){
+    const b = buckets[k]; if(!b.n) return;
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(b.pos,3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(b.uv,2));
+    g.setAttribute('color', new THREE.Float32BufferAttribute(b.col,3));
+    g.setIndex(b.idx);
+    const mesh = new THREE.Mesh(g, b.mat); mesh.matrixAutoUpdate = false; group.add(mesh);
+    if(k.indexOf('__water')===0) fluidMats.water.push(b.mat);
+    if(k.indexOf('__lava')===0) fluidMats.lava.push(b.mat);
+  });
+  return { group:group, fluidMats:fluidMats };
+}
+
+/* ---------- small world-building helpers ---------- */
+function W(){ return new Map(); }
+function set(w,x,y,z,t){ w.set(x+','+y+','+z, t); }
+function fill(w,x0,x1,y,z0,z1,t){ for(let x=x0;x<=x1;x++) for(let z=z0;z<=z1;z++) set(w,x,y,z,t); }
+function box(w,x0,x1,y0,y1,z0,z1,t){ for(let x=x0;x<=x1;x++) for(let y=y0;y<=y1;y++) for(let z=z0;z<=z1;z++) set(w,x,y,z,t); }
+function tree(w,x,z,gy){ for(let i=1;i<=3;i++) set(w,x,gy+i,z,'log');
+  for(let dx=-1;dx<=1;dx++) for(let dz=-1;dz<=1;dz++){ set(w,x+dx,gy+3,z+dz,'leaves'); set(w,x+dx,gy+4,z+dz,'leaves'); }
+  set(w,x,gy+5,z,'leaves'); }
+function portalFrame(w,cx,gy,cz){
+  for(let i=0;i<5;i++){ set(w,cx-2,gy+i,cz,'obsidian'); set(w,cx+1,gy+i,cz,'obsidian'); }
+  set(w,cx-1,gy+4,cz,'obsidian'); set(w,cx,gy+4,cz,'obsidian'); set(w,cx-1,gy,cz,'obsidian'); set(w,cx,gy,cz,'obsidian');
+  for(let i=1;i<4;i++){ set(w,cx-1,gy+i,cz,'portal'); set(w,cx,gy+i,cz,'portal'); }
+}
+function glowSprite(color, scale){
+  const c = mkCanvas(32,32), x = c.getContext('2d');
+  const g = x.createRadialGradient(16,16,2,16,16,16);
+  g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(.35,color); g.addColorStop(1,'rgba(0,0,0,0)');
+  x.fillStyle=g; x.fillRect(0,0,32,32);
+  const t = new THREE.CanvasTexture(c);
+  const m = new THREE.SpriteMaterial({ map:t, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true, opacity:.85 });
+  const s = new THREE.Sprite(m); s.scale.set(scale,scale,1); return s;
+}
+function torch(parent,x,y,z,flames){
+  const g = new THREE.Group();
+  const stick = new THREE.Mesh(new THREE.BoxGeometry(.13,.55,.13), new THREE.MeshBasicMaterial({ color:0x6b4f2a }));
+  stick.position.set(x,y+.27,z); g.add(stick);
+  const tip = new THREE.Mesh(new THREE.BoxGeometry(.2,.2,.2), new THREE.MeshBasicMaterial({ color:0xffb347 }));
+  tip.position.set(x,y+.6,z); g.add(tip);
+  const glow = glowSprite('rgba(255,170,60,.55)', 1.7); glow.position.set(x,y+.62,z); g.add(glow);
+  parent.add(g);
+  flames.push({ glow:glow, seed:Math.random()*10 });
+  return g;
+}
+function hitbox(parent,x,y,z,w,h,d,data){
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), new THREE.MeshBasicMaterial({ visible:false }));
+  m.position.set(x,y,z); m.userData.hit = data; parent.add(m); return m;
+}
+function pointsCloud(parent,count,color,size,area,opacity){
+  const geo = new THREE.BufferGeometry(), pos = new Float32Array(count*3);
+  for(let i=0;i<count;i++){ pos[i*3]=(Math.random()-.5)*area[0]; pos[i*3+1]=Math.random()*area[1]; pos[i*3+2]=(Math.random()-.5)*area[2]; }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const mat = new THREE.PointsMaterial({ color:color, size:size, transparent:true, opacity:opacity, sizeAttenuation:true, depthWrite:false });
+  const pts = new THREE.Points(geo, mat); parent.add(pts); return pts;
+}
+function cloudsGroup(tint){
+  const g = new THREE.Group(), mat = new THREE.MeshBasicMaterial({ color:tint, transparent:true, opacity:.82 });
+  const r = rng(7);
+  for(let i=0;i<11;i++){
+    const wdt = 3+r()*5, dep = 2+r()*3;
+    const m = new THREE.Mesh(new THREE.BoxGeometry(wdt,.55,dep), mat);
+    m.position.set((r()-.5)*44, 13.5+r()*2.5, (r()-.5)*40); g.add(m);
+  }
+  return g;
+}
+function celestial(parent,kind){
+  const isSun = kind==='sun';
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(isSun?4.4:3.2, isSun?4.4:3.2),
+    new THREE.MeshBasicMaterial({ color:isSun?0xfff3a0:0xdfe8ff, fog:false }));
+  m.position.set(-20, 17, -34); parent.add(m);
+  const glow = glowSprite(isSun?'rgba(255,220,120,.5)':'rgba(180,200,255,.4)', isSun?11:8);
+  glow.position.copy(m.position); parent.add(glow);
+}
+
+/* ==================== 5. BIOME BUILDERS ==================== */
+const ICON_TEX = {};
+function iconTex(kind){
+  if(!ICON_TEX[kind]){ const t = new THREE.CanvasTexture(iconCanvas(kind));
+    t.magFilter = THREE.NearestFilter; t.minFilter = THREE.NearestFilter; t.generateMipmaps = false; t.colorSpace = THREE.SRGBColorSpace; ICON_TEX[kind] = t; }
+  return ICON_TEX[kind];
+}
+function itemSprite(kind, scale){
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map:iconTex(kind), transparent:true }));
+  s.scale.set(scale, scale, 1); return s;
+}
+function baseBiome(){ return { group:new THREE.Group(), dyn:[], flames:[], fluidMats:{water:[],lava:[]}, clouds:null, pts:null, drift:null }; }
+function finishBiome(B, w){ const m = meshWorld(w); B.group.add(m.group); B.fluidMats = m.fluidMats; B.worldRef = w; return B; }
+
+function buildSpawn(){
+  const B = baseBiome(), w = W();
+  fill(w,-12,11,0,-12,11,'grass'); fill(w,-12,11,-1,-12,11,'dirt'); fill(w,-12,11,-2,-12,11,'stone');
+  fill(w,-1,0,0,-5,8,'sand');                                        // path to portal
+  fill(w,6,9,0,4,7,'sand'); set(w,7,0,5,'water'); set(w,8,0,5,'water'); set(w,7,0,6,'water'); set(w,8,0,6,'water'); // pond
+  tree(w,6,-4,0); tree(w,-8,4,0); tree(w,-7,-9,0); tree(w,9,9,0);
+  portalFrame(w,0,1,-6);
+  B.clouds = cloudsGroup(0xffffff); B.group.add(B.clouds); celestial(B.group,'sun');
+  B.pts = pointsCloud(B.group, LOWEND?26:60, 0xffffff, .13, [42,6,42], .45); B.drift = { vy:.05, vx:.22 };
+  hitbox(B.group, 0, 2.6, -5.5, 2.4, 3.4, .9, { label:'World Portal', sub:'Click — travel to the Village', action:function(){ goTo('village'); } });
+  hitbox(B.group, 6.5, 2, -3.5, 3.4, 4.6, 3.4, { label:'Oak Tree', sub:'Planted 2023 — still growing, like the LeetCode streak', action:function(){ burstAt(6.5,3.4,-3.5,0x3e7d24); } });
+  B.sky = { bg:0x79a6ff, fog:0x79a6ff, near:32, far:95 };
+  B.camPos = [9.5,4.6,12.5]; B.camLook = [-1,1.3,-2];
+  return finishBiome(B, w);
+}
+
+function buildVillage(){
+  const B = baseBiome(), w = W();
+  fill(w,-12,11,0,-12,11,'grass'); fill(w,-12,11,-1,-12,11,'dirt');
+  fill(w,-1,0,0,-12,11,'dirt'); fill(w,-12,11,0,-1,0,'dirt');        // dirt crossroads
+  // Hut A (west): planks + log corners + bookshelf inside
+  box(w,-9,-5,1,3,-8,-8,'planks'); box(w,-9,-5,1,3,-4,-4,'planks'); box(w,-9,-9,1,3,-8,-4,'planks'); box(w,-5,-5,1,3,-8,-4,'planks');
+  [-9,-5].forEach(function(cx){ [-8,-4].forEach(function(cz){ for(let y=1;y<=3;y++) set(w,cx,y,cz,'log'); }); });
+  box(w,-10,-4,4,4,-9,-3,'planks'); box(w,-9,-5,5,5,-8,-4,'log');
+  set(w,-7,1,-4,'grass'); set(w,-7,2,-4,'grass'); w.delete('-7,1,-4'); w.delete('-7,2,-4'); // door gap
+  set(w,-8,1,-8,'bookshelf'); set(w,-6,1,-8,'bookshelf');
+  // Hut B (east, smaller)
+  box(w,5,8,1,2,-7,-7,'planks'); box(w,5,8,1,2,-4,-4,'planks'); box(w,5,5,1,2,-7,-4,'planks'); box(w,8,8,1,2,-7,-4,'planks');
+  box(w,4,9,3,3,-8,-3,'planks');
+  w.delete('6,1,-4'); w.delete('7,1,-4');
+  // Well
+  box(w,4,6,1,1,3,5,'stone'); set(w,5,1,4,'water'); set(w,5,0,4,'water');
+  // Lamp posts
+  [[-3,-3],[3,-3],[-3,4],[3,4]].forEach(function(p){ set(w,p[0],1,p[1],'log'); set(w,p[0],2,p[1],'log'); });
+  B.group.updateMatrixWorld(true);
+  const flames = B.flames;
+  [[-3,-3],[3,-3],[-3,4],[3,4]].forEach(function(p){ torch(B.group, p[0]+.5, 2.6, p[1]+.5, flames); });
+  // Villager
+  const vil = new THREE.Group();
+  const robe = new THREE.Mesh(new THREE.BoxGeometry(.58,.95,.34), new THREE.MeshBasicMaterial({ color:0x6e5138 })); robe.position.y = .48; vil.add(robe);
+  const head = new THREE.Mesh(new THREE.BoxGeometry(.5,.55,.5), new THREE.MeshBasicMaterial({ color:0xc8966e })); head.position.y = 1.24; vil.add(head);
+  const nose = new THREE.Mesh(new THREE.BoxGeometry(.13,.32,.13), new THREE.MeshBasicMaterial({ color:0xb9855a })); nose.position.set(0,1.14,.31); vil.add(nose);
+  const brow = new THREE.Mesh(new THREE.BoxGeometry(.52,.09,.02), new THREE.MeshBasicMaterial({ color:0x4a3826 })); brow.position.set(0,1.38,.26); vil.add(brow);
+  vil.position.set(2.5, 1, 2.5); B.group.add(vil);
+  B.dyn.push(function(t){ vil.position.y = 1 + Math.sin(t*1.6)*.03; vil.rotation.y = Math.sin(t*.5)*.35; });
+  hitbox(B.group, 2.5, 1.6, 2.5, 1.1, 2.2, 1.1, { label:'Villager', sub:'Click — talk ("Hrmm.")', action:function(){ advanceDialogue(); } });
+  hitbox(B.group, -7, 1.6, -5.5, 4.5, 3, 4.5, { label:'Village Library', sub:'Where the study assistant (Nexora) was born', action:function(){ burstAt(-7,2.4,-6,0xa0824f); } });
+  B.clouds = cloudsGroup(0xffd9b0); B.group.add(B.clouds); celestial(B.group,'sun');
+  B.pts = pointsCloud(B.group, LOWEND?18:40, 0xffe0b3, .12, [42,5,42], .5); B.drift = { vy:.04, vx:.18 };
+  B.sky = { bg:0xf2994a, fog:0xe8905a, near:30, far:90 };
+  B.camPos = [10,4.4,11.5]; B.camLook = [-1,1.5,-2];
+  return finishBiome(B, w);
+}
+
+function buildMine(){
+  const B = baseBiome(), w = W();
+  fill(w,-12,11,0,-12,11,'stone'); fill(w,-12,11,-1,-12,11,'stone');
+  box(w,-12,11,1,6,-9,-9,'stone');                                    // back wall
+  box(w,-12,-12,1,4,-9,2,'stone');                                   // left wall
+  const wallOres = ['oreGold','oreCoal','oreIron','oreLapis','oreCoal','oreRedstone','oreIron','oreGold'];
+  wallOres.forEach(function(o,i){ set(w,-10+i*3, 2+(i%3), -9, o); });
+  set(w,3,4,-9,'oreDiamond'); set(w,-4,5,-9,'oreEmerald');
+  // Skill pillars: two-high ore columns in an arc
+  SKILLS.forEach(function(s,i){
+    const x = -10 + i*2.3, z = -3;
+    set(w,x,1,z,'stone'); set(w,x,2,z,'ore'+s.ore.charAt(0).toUpperCase()+s.ore.slice(1));
+    hitbox(B.group, x+.5, 2, z+.5, 1.5, 3, 1.5, { label:s.name, sub:s.tag, oreIndex:i, action:function(){ selectSkill(i, true); } });
+  });
+  fill(w,7,10,0,4,7,'lava');                                          // lava pool
+  [[-6,3],[0,6],[5,-6],[-2,-6]].forEach(function(p){ set(w,p[0],1,p[1],'stone'); });
+  const flames = B.flames;
+  [[-6,-8.2],[0,-8.2],[6,-8.2],[-11.2,0]].forEach(function(p){ torch(B.group, p[0]+.5, 2.4, p[1]+.5, flames); });
+  B.pts = pointsCloud(B.group, LOWEND?22:55, 0x9a9ab0, .1, [38,7,32], .35); B.drift = { vy:-.12, vx:.05 };
+  B.sky = { bg:0x0b0b12, fog:0x0b0b12, near:11, far:48 };
+  B.camPos = [8.5,3.8,11.5]; B.camLook = [0,1.7,-3];
+  return finishBiome(B, w);
+}
+
+let craftItemGroup = null;
+function buildCrafting(){
+  const B = baseBiome(), w = W();
+  fill(w,-12,11,0,-12,11,'grass'); fill(w,-8,7,0,-8,7,'planks');
+  box(w,-1,1,1,1,-1,1,'craftBlock');                                  // the Crafting Table (3×3)
+  set(w,-6,1,-6,'bookshelf'); set(w,-6,2,-6,'bookshelf'); set(w,6,1,-5,'basalt'); set(w,-7,1,5,'log'); set(w,-7,2,5,'log');
+  tree(w,9,6,0); tree(w,-10,-3,0); tree(w,10,-8,0);
+  craftItemGroup = new THREE.Group(); B.group.add(craftItemGroup);
+  refreshCraftItems();
+  B.dyn.push(function(t){ if(craftItemGroup) craftItemGroup.children.forEach(function(s,i){ s.position.y = s.userData.baseY + Math.sin(t*1.8 + i*.7)*.12; s.material.rotation = Math.sin(t*.9+i)*0.25; }); });
+  hitbox(B.group, 0.5, 1.6, 0.5, 3.6, 1.6, 3.6, { label:'Crafting Table', sub:'Click — next project recipe', action:function(){ cycleProject(true); } });
+  B.clouds = cloudsGroup(0xffffff); B.group.add(B.clouds); celestial(B.group,'sun');
+  B.pts = pointsCloud(B.group, LOWEND?20:45, 0xffffff, .12, [42,6,42], .4); B.drift = { vy:.05, vx:.2 };
+  B.sky = { bg:0x74a0ff, fog:0x74a0ff, near:32, far:95 };
+  B.camPos = [9,5,12]; B.camLook = [0,1.6,0];
+  return finishBiome(B, w);
+}
+function refreshCraftItems(){
+  if(!craftItemGroup) return;
+  while(craftItemGroup.children.length){ const s = craftItemGroup.children[craftItemGroup.children.length-1]; craftItemGroup.remove(s); if(s.material) s.material.dispose(); }
+  const p = PROJECTS[state.project];
+  p.grid.forEach(function(kind,i){
+    const s = itemSprite(kind, .62);
+    s.position.set(-0.3 + (i%3)*.8, 3.1, -0.3 + ((i/3)|0)*.8); s.userData.baseY = 3.1; craftItemGroup.add(s);
+  });
+  const res = itemSprite(p.icon, 1.0);
+  res.position.set(3.1, 3.2, 0.5); res.userData.baseY = 3.2; craftItemGroup.add(res);
+}
+
+function buildNether(){
+  const B = baseBiome(), w = W();
+  fill(w,-12,11,0,-12,11,'netherrack'); fill(w,-12,11,-1,-12,11,'netherrack');
+  box(w,-12,11,1,5,-9,-9,'netherrack');
+  fill(w,-11,-5,0,2,7,'lava');                                       // lava lake
+  [[7,-6,5],[9,-2,3],[-9,-6,4]].forEach(function(c){ for(let y=1;y<=c[2];y++) set(w,c[0],y,c[1],'basalt'); });
+  box(w,0,0,6,6,-9,-4,'netherrack');                                  // overhang arm
+  set(w,-1,5,-4,'glowstone'); set(w,0,5,-4,'glowstone'); set(w,1,5,-4,'glowstone'); set(w,0,5,-3,'glowstone'); set(w,0,4,-4,'glowstone');
+  const g1 = glowSprite('rgba(255,160,40,.6)', 4.2); g1.position.set(.5, 5.4, -3.5); B.group.add(g1); B.flames.push({ glow:g1, seed:3 });
+  [[7.5,6,-5.5],[9.5,4,-1.5]].forEach(function(p,i){ const g = glowSprite('rgba(255,150,50,.5)', 2.2); g.position.set(p[0],p[1],p[2]); B.group.add(g); B.flames.push({ glow:g, seed:i*2+1 }); });
+  portalFrame(w,6,1,5);
+  hitbox(B.group, 6, 2.6, 5.5, 2.4, 3.4, .9, { label:'Nether Portal', sub:'Click — travel to The End', action:function(){ goTo('end'); } });
+  hitbox(B.group, .5, 5.2, -3.5, 3.4, 1.8, 2.4, { label:'Glowstone Cluster', sub:'Advancements shine brightest in the dark', action:function(){ burstAt(.5,5.2,-3.5,0xfcee6e); } });
+  B.pts = pointsCloud(B.group, LOWEND?34:85, 0xffa050, .15, [42,9,38], .55); B.drift = { vy:-.3, vx:.07 };
+  B.sky = { bg:0x2b0503, fog:0x3d0a06, near:10, far:58 };
+  B.camPos = [9.5,4.4,11.5]; B.camLook = [-1,1.4,-2];
+  return finishBiome(B, w);
+}
+
+function buildEnd(){
+  const B = baseBiome(), w = W();
+  const r = rng(99);
+  for(let x=-11;x<=11;x++) for(let z=-11;z<=11;z++){
+    const d = Math.sqrt(x*x+z*z) + r()*1.6;
+    if(d < 9.6) set(w,x,0,z,'endstone');
+    if(d < 7.8) set(w,x,-1,z,'endstone');
+    if(d < 5.0) set(w,x,-2,z,'endstone');
+  }
+  [[-6,-5,4],[6,-6,5],[-3,6,3]].forEach(function(c){ for(let y=1;y<=c[2];y++) set(w,c[0],y,c[1],'obsidian'); set(w,c[0],c[2]+1,c[1],'glowstone'); });
+  // End portal pool (flat, centre)
+  box(w,-2,1,0,0,-2,1,'obsidian'); set(w,-1,0,-1,'portal'); set(w,0,0,-1,'portal'); set(w,-1,0,0,'portal'); set(w,0,0,0,'portal');
+  const stars = pointsCloud(B.group, LOWEND?140:320, 0xffffff, .22, [110,46,110], .95); stars.material.fog = false; stars.position.y = 6;
+  B.pts = pointsCloud(B.group, LOWEND?26:70, 0xb389ff, .16, [34,8,34], .7); B.drift = { vy:.16, vx:.04 };
+  hitbox(B.group, 0, 1.2, 0, 3.4, 1.6, 3.4, { label:'End Portal', sub:'Click — open the Contact panel', action:function(){ openContact(); } });
+  B.sky = { bg:0x05010d, fog:0x05010d, near:22, far:85 };
+  B.camPos = [10.5,5.6,12.5]; B.camLook = [0,0.7,0];
+  return finishBiome(B, w);
+}
+const BUILDERS = { spawn:buildSpawn, village:buildVillage, mine:buildMine, crafting:buildCrafting, nether:buildNether, end:buildEnd };
+
+/* ==================== 6. STATE, SCENE, TRANSITIONS ==================== */
+const LOWEND = ((navigator.hardwareConcurrency||8) <= 4) || ((navigator.deviceMemory||8) <= 4) || /Android|iPhone|iPad/i.test(navigator.userAgent||'');
+const state = { section:'spawn', visited:new Set(['spawn']), skill:0, project:0, dialogue:0, typing:false,
+  unlocked:new Set(), busy:false, muted:false,
+  reduced: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches };
+let renderer=null, scene=null, camera=null, current=null;
+let yawT=0, pitchT=0, yaw=0, pitch=0, yawOff=0, pitchOff=0, zooming=false;
+let raycaster=null, hoverLine=null, hoveredHit=null, mouseClient={x:0,y:0}, pointerNDC={x:0,y:0};
+let bursts=[], crackState=null, fluidIdx=0, fluidClock=0, portalClock=0;
+const CRACK_TEX=[];
+function makeCrackTextures(){
+  for(let s=0;s<4;s++){
+    const c=mkCanvas(), x=c.getContext('2d'), r=rng(31+s);
+    x.strokeStyle='rgba(10,10,10,.85)'; x.lineWidth=1;
+    const lines=3+s*3;
+    for(let i=0;i<lines;i++){
+      x.beginPath(); let px0=8, py0=8; x.moveTo(px0,py0);
+      const ang=r()*Math.PI*2, segs=2+((r()*3)|0);
+      for(let j=0;j<segs;j++){ px0+=Math.cos(ang+(r()-.5))*3.4; py0+=Math.sin(ang+(r()-.5))*3.4; x.lineTo(px0,py0); }
+      x.stroke();
+    }
+    const t=new THREE.CanvasTexture(c); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; t.generateMipmaps=false;
+    CRACK_TEX.push(t);
+  }
+}
+function disposeGroup(g){
+  g.traverse(function(o){
+    if(o.geometry) o.geometry.dispose();
+    if(o.material){ const ms = Array.isArray(o.material)?o.material:[o.material];
+      ms.forEach(function(m){ if(m.map && m.map.isCanvasTexture && m.map.image && m.map.image.width===32) m.map.dispose(); m.dispose(); }); }
+  });
+}
+function applyCamBase(){
+  if(!current) return;
+  camera.position.set(current.camPos[0], current.camPos[1], current.camPos[2]);
+}
+function loadBiome(id){
+  if(current){ scene.remove(current.group); disposeGroup(current.group); }
+  craftItemGroup = null;
+  current = BUILDERS[id]();
+  scene.add(current.group);
+  scene.background = new THREE.Color(current.sky.bg);
+  scene.fog = new THREE.Fog(current.sky.fog, current.sky.near, current.sky.far);
+  applyCamBase(); yaw=yawT=0; pitch=pitchT=0;
+  document.getElementById('biomeName').textContent = SECTIONS.filter(function(s){return s.id===id;})[0].biome;
+  document.querySelectorAll('.slot[data-to]').forEach(function(el){ el.classList.toggle('sel', el.dataset.to===id); });
+  renderPanel(id);
+  document.getElementById('dialogue').classList.toggle('on', id==='village');
+  if(id==='village') startDialogueLine(state.dialogue);
+}
+function showLoading(show, tip){
+  const el = document.getElementById('loading');
+  if(show){ el.classList.add('on');
+    if(tip) document.getElementById('loadTip').textContent = tip;
+    const bar = document.getElementById('loadbar'); bar.style.width='0%';
+    let p=0; const iv = setInterval(function(){ p = Math.min(100, p + 8 + Math.random()*14); bar.style.width = p+'%'; if(p>=100) clearInterval(iv); }, 90);
+  } else el.classList.remove('on');
+}
+function goTo(id){
+  if(!renderer || state.busy || id===state.section) return;
+  AudioX.init(); state.busy = true; zooming = true; AudioX.portal();
+  const gl = document.getElementById('gl'), sw = document.getElementById('swirl'), fd = document.getElementById('fade');
+  const tip = TIPS[(Math.random()*TIPS.length)|0];
+  if(state.reduced){
+    fd.classList.add('on');
+    setTimeout(function(){ loadBiome(id); afterArrive(id); fd.classList.remove('on'); state.busy=false; zooming=false; }, 260);
+    return;
+  }
+  gl.classList.add('warping'); sw.classList.add('on');
+  setTimeout(function(){
+    fd.classList.add('on'); showLoading(true, tip);
+    setTimeout(function(){
+      loadBiome(id);
+      setTimeout(function(){
+        showLoading(false); fd.classList.remove('on'); sw.classList.remove('on'); gl.classList.remove('warping');
+        state.busy=false; zooming=false; afterArrive(id);
+      }, 420);
+    }, 950);
+  }, 620);
+}
+function afterArrive(id){
+  state.section = id; state.visited.add(id);
+  document.getElementById('xpfill').style.width = (state.visited.size/6*100)+'%';
+  document.getElementById('xplvl').textContent = state.visited.size;
+  if(state.visited.size>=3) unlock('visit3');
+  if(state.visited.size>=6) unlock('visit6');
+  AudioX.pop();
+}
+function unlock(id){
+  if(state.unlocked.has(id)) return;
+  const adv = ADVANCEMENTS.filter(function(a){return a.id===id;})[0]; if(!adv) return;
+  state.unlocked.add(id);
+  document.getElementById('toastTitle').textContent = adv.title;
+  const t = document.getElementById('toast'); t.classList.add('on');
+  AudioX.chime();
+  setTimeout(function(){ t.classList.remove('on'); }, 3400);
+  if(state.section==='nether') renderPanel('nether');
+}
+function burstAt(x,y,z,color){
+  AudioX.breakBlock();
+  const n = LOWEND?10:18, pos = new Float32Array(n*3), vel = [];
+  for(let i=0;i<n;i++){ pos[i*3]=x; pos[i*3+1]=y; pos[i*3+2]=z;
+    vel.push([(Math.random()-.5)*3.2, Math.random()*3.4+.6, (Math.random()-.5)*3.2]); }
+  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const mat = new THREE.PointsMaterial({ color:color, size:.17, transparent:true, depthWrite:false });
+  const pts = new THREE.Points(geo, mat); scene.add(pts);
+  bursts.push({ pts:pts, vel:vel, life:0 });
+}
+function startCrack(point, normal, blockPos){
+  if(!crackState){
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1,1), new THREE.MeshBasicMaterial({ map:CRACK_TEX[0], transparent:true, depthWrite:false }));
+    scene.add(m); crackState = { mesh:m, t:0 };
+  }
+  const cs = crackState; cs.t = 0; cs.blockPos = blockPos;
+  cs.mesh.visible = true;
+  cs.mesh.position.set(point.x + normal.x*.53, point.y + normal.y*.53, point.z + normal.z*.53);
+  cs.mesh.lookAt(cs.mesh.position.clone().add(normal));
+  cs.mesh.material.map = CRACK_TEX[0];
+}
+const BLOCK_LABEL = { grass:'Grass Block', dirt:'Dirt', sand:'Sand', stone:'Stone', planks:'Oak Planks', log:'Oak Log',
+  leaves:'Oak Leaves', bookshelf:'Bookshelf', craftBlock:'Crafting Table', netherrack:'Netherrack', basalt:'Basalt',
+  glowstone:'Glowstone', obsidian:'Obsidian', endstone:'End Stone', oreDiamond:'Diamond Ore', oreEmerald:'Emerald Ore',
+  oreGold:'Gold Ore', oreRedstone:'Redstone Ore', oreIron:'Iron Ore', oreLapis:'Lapis Ore', oreCoal:'Coal Ore',
+  water:'Water', lava:'Lava — do not touch', portal:'Portal Block' };
+
+/* ==================== 7. PANELS + UI LOGIC ==================== */
+const $panel = function(){ return document.getElementById('panel'); };
+const ICON_URL = {};
+function iconURL(kind){ if(!ICON_URL[kind]) ICON_URL[kind] = iconCanvas(kind).toDataURL(); return ICON_URL[kind]; }
+function oreURL(ore){ const name = 'ore' + ore.charAt(0).toUpperCase() + ore.slice(1); return TEX[name][0].image.toDataURL(); }
+function texURL(name){ return TEX[name][0].image.toDataURL(); }
+
+function renderPanel(id){
+  const p = $panel();
+  if(id==='spawn'){
+    p.innerHTML = '<h2>⬛ SPAWN POINT — AI/ML / DATA SCIENTIST ENGINEER</h2>' +
+      '<p><b>Raghuvendra Kumar.</b> I turn ML models and LLM systems into shipped products: a dual-MCP study assistant, a 4-agent research pipeline with a self-critique loop, and a churn model whose recall I raised <b>0.47 → 0.58</b> by catching my own data-leakage bug.</p>' +
+      '<p class="dim" style="margin-top:7px">Final-year B.Tech (AI &amp; ML), VIT Bhopal · available for full-time roles now · remote or relocation.</p>' +
+      '<p style="margin-top:7px"><b>Proof, up front:</b> 200-day LeetCode streak · 6 projects with live demos &amp; public code · CNN at 86.0% on 54,305 images</p>' +
+      '<div style="margin-top:8px"><span class="chip">Python</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span></div>' +
+      '<div class="ctaRow">' +
+      '<a class="mc-btn gold" href="' + ME.resume + '" download style="text-decoration:none">📄 Download Resume</a>' +
+      '<button class="mc-btn green" data-act="goto" data-to="end">🍎 Hire Me</button>' +
+      '<button class="mc-btn" data-act="goto" data-to="crafting">View Projects</button></div>' +
+      '<p class="dim" style="margin-top:9px">Travel with the hotbar below (keys 1–6), or click the portal in the world. In a hurry? Use “Simple page”, top right.</p>';
+  }
+  else if(id==='village'){
+    p.innerHTML = '<h2>🏠 ABOUT — THE VILLAGE</h2>' +
+      '<p>The villager in the plaza (click him!) tells my story. The short version:</p>' +
+      '<p style="margin-top:6px">Final-year <b>AI &amp; ML engineer at VIT Bhopal</b> who builds ML models and LLM applications — multi-agent systems, RAG pipelines, CNNs — and deploys them live with public code.</p>' +
+      '<h3>MY RULE</h3><p>Know <b>why</b> every line of code exists, not just what it does. It is why my churn project documents its own bug — and its fix.</p>' +
+      '<h3>LOOKING FOR</h3><p>Full-time <b>AI/ML Engineer</b> or <b>Data Scientist</b> roles. Based in Bhopal; open to remote and to relocating anywhere in India.</p>' +
+      '<h3>EDUCATION</h3><p>B.Tech, Artificial Intelligence &amp; Machine Learning — VIT Bhopal (2023–2027).</p>';
+  }
+  else if(id==='mine'){
+    let grid = '';
+    SKILLS.forEach(function(s,i){ grid += '<button class="oreCell' + (i===state.skill?' sel':'') + '" data-skill="' + i + '" aria-label="Skill: ' + s.name + '"><img class="pixelated" src="' + oreURL(s.ore) + '" alt="' + s.name + ' ore"><span>' + s.name + '</span></button>'; });
+    p.innerHTML = '<h2>⛏ THE MINE — SKILLS</h2>' +
+      '<p class="dim">Every skill is an ore. Diamond = deepest expertise. Click an ore here — or click its pillar in the cave.</p>' +
+      '<div class="oreGrid">' + grid + '</div><div id="skillDetail"></div>';
+    fillSkillDetail();
+  }
+  else if(id==='crafting'){
+    let list = '';
+    PROJECTS.forEach(function(pr,i){
+      let cells = ''; pr.grid.forEach(function(g){ cells += '<i><img class="pixelated" src="' + iconURL(g) + '" alt=""></i>'; });
+      list += '<button class="recipe' + (i===state.project?' sel':'') + '" data-proj="' + i + '" aria-label="Project: ' + pr.name + '">' +
+        '<span class="grid3">' + cells + '</span><span class="arrow">➜</span>' +
+        '<span class="resSlot"><img class="pixelated" src="' + iconURL(pr.icon) + '" alt=""></span>' +
+        '<span class="recipeMeta"><b>' + pr.name + '</b><small>' + pr.tech.slice(0,3).join(' · ') + '</small><small style="color:#2e6b1e">' + pr.metric + '</small></span></button>';
+    });
+    p.innerHTML = '<h2>🛠 CRAFTING TABLE — PROJECTS</h2>' +
+      '<p class="dim">Six real recipes, all shipped. Click one to see what it crafts — or click the table in the world to cycle.</p>' + list +
+      '<div id="projDetail"></div>';
+    fillProjectDetail();
+  }
+  else if(id==='nether'){
+    let adv = '';
+    ADVANCEMENTS.forEach(function(a){
+      const un = a.always || state.unlocked.has(a.id);
+      const icon = a.icon==='portal' ? iconURL('portal') : a.icon==='craft' ? iconURL('craft') : a.icon==='apple' ? iconURL('apple') : oreURL(a.icon);
+      adv += '<div class="advCard' + (un?'':' locked') + '"><img class="pixelated" src="' + icon + '" alt=""><div><b>' + a.title + '</b><small>' + a.desc + (un?'':' · 🔒 ' + (a.need==='section' ? 'visit ' + a.count + ' worlds' : a.need==='craft' ? 'open a project recipe' : 'open the Contact portal')) + '</small></div></div>';
+    });
+    p.innerHTML = '<h2>🔥 THE NETHER — EXPERIENCE &amp; ADVANCEMENTS</h2>' +
+      '<p><b>Experience, honestly:</b> fresher — no formal roles yet. Everything I know was earned by building, deploying and debugging real projects in public. That record is the advancements screen:</p>' +
+      '<div class="advGrid" style="margin-top:9px">' + adv + '</div>' +
+      '<p class="dim" style="margin-top:9px">Unlock the rest by exploring — visit worlds, open recipes, reach The End.</p>';
+  }
+  else if(id==='end'){
+    p.innerHTML = '<h2>🌌 THE END — CONTACT</h2>' +
+      '<p>You reached The End. That is where the good conversations start.</p>' +
+      '<p style="margin-top:7px">✉ <a href="mailto:' + ME.email + '">' + ME.email + '</a><br>' +
+      '🐙 <a href="' + ME.github + '" target="_blank" rel="noopener">github.com/raghuvendra34</a><br>' +
+      '💼 <a href="' + ME.linkedin + '" target="_blank" rel="noopener">linkedin.com/in/raghuvendra-kumar-76919128a</a></p>' +
+      '<h3>SEND A MESSAGE (opens your mail app)</h3>' +
+      '<label>Your name<input id="cf-name" type="text" autocomplete="name"></label>' +
+      '<label>Your email<input id="cf-email" type="email" autocomplete="email"></label>' +
+      '<label>Message<textarea id="cf-msg" rows="3" placeholder="Hi Raghuvendra, we have a role…"></textarea></label>' +
+      '<div class="ctaRow"><button class="mc-btn green" id="cf-send">🍎 Send — Hire Me</button>' +
+      '<a class="mc-btn gold" href="' + ME.resume + '" download style="text-decoration:none">📄 Resume</a></div>' +
+      '<p class="dim" style="margin-top:8px">Bhopal, India · replies within a day, usually faster.</p>';
+    const send = document.getElementById('cf-send');
+    if(send) send.addEventListener('click', function(){
+      const n = document.getElementById('cf-name').value || 'A recruiter';
+      const e = document.getElementById('cf-email').value || '';
+      const m = document.getElementById('cf-msg').value || 'Hi Raghuvendra, I saw your portfolio and would like to talk about a role.';
+      unlock('hire');
+      window.location.href = 'mailto:' + ME.email + '?subject=' + encodeURIComponent('Opportunity for Raghuvendra — from ' + n) +
+        '&body=' + encodeURIComponent(m + '\n\n— ' + n + (e ? ' (' + e + ')' : ''));
+    });
+  }
+}
+function fillSkillDetail(){
+  const d = document.getElementById('skillDetail'); if(!d) return;
+  const s = SKILLS[state.skill];
+  d.innerHTML = '<b>' + s.name + '</b> <span class="chip">' + s.tag + '</span><p style="margin-top:5px">' + s.detail + '</p>';
+}
+function selectSkill(i, fromWorld){
+  state.skill = i;
+  document.querySelectorAll('.oreCell').forEach(function(el, j){ el.classList.toggle('sel', j===i); });
+  fillSkillDetail();
+  if(fromWorld) AudioX.pop();
+}
+function fillProjectDetail(){
+  const d = document.getElementById('projDetail'); if(!d) return;
+  const pr = PROJECTS[state.project];
+  d.innerHTML = '<b style="font-size:21px">' + pr.name + '</b><p style="margin-top:3px;color:#2e6b1e"><b>Result:</b> ' + pr.metric + '</p><p style="margin-top:4px">' + pr.desc + '</p>' +
+    '<div style="margin-top:6px">' + pr.tech.map(function(t){ return '<span class="chip">' + t + '</span>'; }).join('') + '</div>' +
+    '<p style="margin-top:7px"><a href="' + pr.github + '" target="_blank" rel="noopener">GitHub repo</a>' +
+    (pr.live ? ' · <a href="' + pr.live + '" target="_blank" rel="noopener">Live demo</a>' : ' · <span class="dim">runs locally — see repo README</span>') + '</p>';
+}
+function selectProject(i){ state.project = i;
+  document.querySelectorAll('.recipe').forEach(function(el, j){ el.classList.toggle('sel', j===i); });
+  fillProjectDetail(); unlock('craft');
+  if(state.section==='crafting') refreshCraftItems();
+}
+function cycleProject(fromWorld){ selectProject((state.project+1)%PROJECTS.length); if(fromWorld) AudioX.pop(); }
+function openContact(){ if(state.section!=='end'){ goTo('end'); } unlock('hire'); const p=$panel(); if(p) p.scrollTop = 0; }
+
+/* Villager dialogue (typewriter) */
+let typeTimer = null;
+function startDialogueLine(idx){
+  const txt = document.getElementById('dialogueText'); if(!txt) return;
+  const full = DIALOGUE[idx]; let i = 0; state.typing = true;
+  txt.textContent = '';
+  if(typeTimer) clearInterval(typeTimer);
+  const btn = document.getElementById('dialogueNext');
+  btn.textContent = idx === DIALOGUE.length-1 ? '↺ Again' : 'Next ▶';
+  if(state.reduced){ txt.textContent = full; state.typing = false; return; }
+  typeTimer = setInterval(function(){
+    i++; txt.textContent = full.slice(0, i);
+    if(i % 4 === 0) AudioX.talk();
+    if(i >= full.length){ clearInterval(typeTimer); state.typing = false; }
+  }, 16);
+}
+function advanceDialogue(){
+  AudioX.init();
+  if(state.typing){ if(typeTimer) clearInterval(typeTimer); state.typing = false;
+    document.getElementById('dialogueText').textContent = DIALOGUE[state.dialogue]; return; }
+  state.dialogue = (state.dialogue + 1) % DIALOGUE.length;
+  startDialogueLine(state.dialogue);
+}
+
+/* Tooltip */
+const $tip = function(){ return document.getElementById('tooltip'); };
+function showTip(html, x, y){ const t = $tip(); t.innerHTML = html; t.style.display = 'block';
+  const w = t.offsetWidth, h = t.offsetHeight;
+  t.style.left = Math.min(window.innerWidth - w - 8, x + 16) + 'px';
+  t.style.top = Math.max(8, y - h - 10) + 'px'; }
+function hideTip(){ $tip().style.display = 'none'; }
+
+/* Hotbar */
+function buildHotbar(){
+  const bar = document.getElementById('hotbar');
+  const slotTex = { spawn:'grassSide', village:'planks', mine:'oreDiamond', crafting:'craftSide', nether:'netherrack', end:'endstone' };
+  let html = '';
+  SECTIONS.forEach(function(s){
+    html += '<button class="slot' + (s.id==='spawn'?' sel':'') + '" data-to="' + s.id + '" aria-label="Go to ' + s.name + ' section"><img class="pixelated" src="' + texURL(slotTex[s.id]) + '" alt=""><span class="num">' + s.key + '</span></button>';
+  });
+  html += '<button class="slot" data-act="resume" aria-label="Download resume"><img class="pixelated" src="' + iconURL('paper') + '" alt=""><span class="num">7</span></button>';
+  html += '<button class="slot" data-act="hire" aria-label="Hire me — go to contact"><img class="pixelated" src="' + iconURL('apple') + '" alt=""><span class="num">8</span></button>';
+  html += '<button class="slot" data-act="mute" aria-label="Toggle sound"><img class="pixelated" src="' + iconURL('speaker') + '" alt=""><span class="num">9</span></button>';
+  bar.innerHTML = html;
+  bar.querySelectorAll('.slot').forEach(function(el){
+    el.addEventListener('click', function(){ slotAction(el); });
+    el.addEventListener('mouseenter', function(e){
+      const name = el.dataset.to ? SECTIONS.filter(function(s){return s.id===el.dataset.to;})[0].name :
+        el.dataset.act==='resume' ? 'Download Resume' : el.dataset.act==='hire' ? 'Hire Me' : 'Toggle Sound';
+      showTip('<span class="tt-name">' + name + '</span>', e.clientX, el.getBoundingClientRect().top);
+    });
+    el.addEventListener('mouseleave', hideTip);
+  });
+}
+function slotAction(el){
+  AudioX.init(); AudioX.click();
+  if(el.dataset.to){ goTo(el.dataset.to); return; }
+  if(el.dataset.act==='resume'){ const a = document.createElement('a'); a.href = ME.resume; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }
+  if(el.dataset.act==='hire'){ goTo('end'); unlock('hire'); }
+  if(el.dataset.act==='mute'){ toggleMute(); }
+}
+function toggleMute(){
+  state.muted = !state.muted; AudioX.init(); AudioX.setMuted(state.muted);
+  document.getElementById('soundBtn').textContent = state.muted ? '🔇 Muted' : '🔊 Sound';
+}
+function showSimple(on){
+  document.getElementById('simplePage').classList.toggle('on', on);
+  document.getElementById('hud').style.display = on ? 'none' : '';
+  document.getElementById('gl').style.visibility = on ? 'hidden' : '';
+  if(on) hideTip();
+}
+
+/* Panel click delegation */
+document.addEventListener('click', function(e){
+  AudioX.init();
+  const act = e.target.closest('[data-act]');
+  if(act && act.dataset.act==='goto'){ AudioX.click(); goTo(act.dataset.to); }
+});
+$panel().addEventListener('click', function(e){
+  const sk = e.target.closest('[data-skill]'); if(sk){ AudioX.click(); selectSkill(+sk.dataset.skill, false); return; }
+  const pr = e.target.closest('[data-proj]'); if(pr){ AudioX.click(); selectProject(+pr.dataset.proj); }
+});
+document.getElementById('dialogueNext').addEventListener('click', advanceDialogue);
+document.getElementById('soundBtn').addEventListener('click', toggleMute);
+document.getElementById('simpleBtn').addEventListener('click', function(){ showSimple(true); });
+document.getElementById('back3d').addEventListener('click', function(){ showSimple(false); });
+document.getElementById('motionBtn').addEventListener('click', function(){
+  state.reduced = !state.reduced;
+  this.textContent = state.reduced ? 'Motion: Reduced' : 'Motion: On';
+});
+document.addEventListener('keydown', function(e){
+  if(e.target.tagName==='INPUT' || e.target.tagName==='TEXTAREA') return;
+  const idx = ['1','2','3','4','5','6'].indexOf(e.key);
+  if(idx >= 0){ goTo(SECTIONS[idx].id); return; }
+  if(e.key==='7'){ const a=document.createElement('a'); a.href=ME.resume; a.download=''; document.body.appendChild(a); a.click(); a.remove(); }
+  if(e.key==='8'){ goTo('end'); unlock('hire'); }
+  if(e.key==='9' || e.key.toLowerCase()==='m'){ toggleMute(); }
+  if(e.key==='ArrowRight' || e.key.toLowerCase()==='d'){ const i = SECTIONS.findIndex(function(s){return s.id===state.section;}); goTo(SECTIONS[(i+1)%6].id); }
+  if(e.key==='ArrowLeft' || e.key.toLowerCase()==='a'){ const i = SECTIONS.findIndex(function(s){return s.id===state.section;}); goTo(SECTIONS[(i+5)%6].id); }
+});
+
+/* ==================== 8. INTERACTION + MAIN LOOP + INIT ==================== */
+function setupInput(){
+  const el = renderer.domElement;
+  let downPos = null, dragging = false;
+  el.addEventListener('pointermove', function(e){
+    mouseClient = { x:e.clientX, y:e.clientY };
+    pointerNDC = { x:(e.clientX/window.innerWidth)*2-1, y:-(e.clientY/window.innerHeight)*2+1 };
+    if(dragging && downPos){ yawOff -= (e.clientX-downPos.x)*.0022; pitchOff -= (e.clientY-downPos.y)*.0016;
+      yawOff = Math.max(-.85, Math.min(.85, yawOff)); pitchOff = Math.max(-.5, Math.min(.5, pitchOff)); downPos = { x:e.clientX, y:e.clientY }; }
+    else { yawT = -((e.clientX/window.innerWidth)-.5)*.55; pitchT = -((e.clientY/window.innerHeight)-.5)*.34; }
+  });
+  el.addEventListener('pointerdown', function(e){ AudioX.init(); downPos = { x:e.clientX, y:e.clientY }; dragging = false; el._downAt = { x:e.clientX, y:e.clientY }; });
+  el.addEventListener('pointerup', function(e){
+    const d = el._downAt ? Math.hypot(e.clientX-el._downAt.x, e.clientY-el._downAt.y) : 99;
+    dragging = false; downPos = null;
+    if(d < 7) handleClick();
+  });
+  el.addEventListener('pointerleave', function(){ hideTip(); hoveredHit = null; if(hoverLine) hoverLine.visible = false; });
+}
+function pickWorld(){
+  if(!current) return null;
+  raycaster.setFromCamera(pointerNDC, camera);
+  raycaster.params.Points.threshold = 0;
+  const hits = raycaster.intersectObjects(current.group.children, true);
+  for(let i=0;i<hits.length;i++){ if(hits[i].object.isMesh) return hits[i]; }
+  return null;
+}
+function handleClick(){
+  const hit = pickWorld(); if(!hit) return;
+  let obj = hit.object, hitData = null;
+  while(obj){ if(obj.userData && obj.userData.hit){ hitData = obj.userData.hit; break; } obj = obj.parent; }
+  if(hitData){ AudioX.click(); burstAt(hit.point.x, hit.point.y, hit.point.z, 0xffffff); hitData.action(); return; }
+  if(hit.face && current.worldRef){
+    const p = hit.point, n = hit.face.normal;
+    const bx = Math.floor(p.x - n.x*.5), by = Math.floor(p.y - n.y*.5), bz = Math.floor(p.z - n.z*.5);
+    const type = current.worldRef.get(bx+','+by+','+bz);
+    if(type && type!=='water'){
+      startCrack(p, n, [bx,by,bz]);
+      setTimeout(function(){ burstAt(bx+.5, by+.5, bz+.5, type==='lava' ? 0xff7a2a : 0xcccccc); }, 240);
+    }
+  }
+}
+let lastHoverAt = 0, lastHoverNDC = { x:99, y:99 };
+function updateHover(){
+  if(!current || state.busy) return;
+  const now = performance.now();
+  const moved = Math.abs(pointerNDC.x - lastHoverNDC.x) > .002 || Math.abs(pointerNDC.y - lastHoverNDC.y) > .002;
+  if(!moved && now - lastHoverAt < 120) return;      // raycasting every frame is the top FPS cost — throttle it
+  lastHoverAt = now; lastHoverNDC = { x:pointerNDC.x, y:pointerNDC.y };
+  const hit = pickWorld();
+  if(!hit){ hoverLine.visible = false; if(hoveredHit){ hoveredHit = null; hideTip(); } return; }
+  let obj = hit.object, hitData = null;
+  while(obj){ if(obj.userData && obj.userData.hit){ hitData = obj.userData.hit; break; } obj = obj.parent; }
+  hoverLine.visible = true;
+  hoverLine.position.set(Math.floor(hit.point.x - (hit.face?hit.face.normal.x:0)*.5)+.5,
+    Math.floor(hit.point.y - (hit.face?hit.face.normal.y:0)*.5)+.5,
+    Math.floor(hit.point.z - (hit.face?hit.face.normal.z:0)*.5)+.5);
+  if(hitData){
+    hoveredHit = hitData;
+    showTip('<span class="tt-name">' + hitData.label + '</span><br><span class="tt-sub">' + hitData.sub + '</span>', mouseClient.x, mouseClient.y);
+  } else {
+    if(hoveredHit){ hoveredHit = null; }
+    if(hit.face && current.worldRef){
+      const p = hit.point, n = hit.face.normal;
+      const type = current.worldRef.get(Math.floor(p.x-n.x*.5)+','+Math.floor(p.y-n.y*.5)+','+Math.floor(p.z-n.z*.5));
+      if(type) showTip('<span class="tt-name">' + (BLOCK_LABEL[type]||'Block') + '</span>', mouseClient.x, mouseClient.y);
+      else hideTip();
+    }
+  }
+}
+let lastT = 0;
+function tick(tms){
+  requestAnimationFrame(tick);
+  const t = tms/1000, dt = Math.min(.05, t - (lastT||t)); lastT = t;
+  if(!renderer || document.getElementById('simplePage').classList.contains('on')) return;
+  // camera look + breathing bob + transition zoom
+  yaw += ((yawT+yawOff) - yaw)*.06; pitch += ((pitchT+pitchOff) - pitch)*.06;
+  pitch = Math.max(-.6, Math.min(.6, pitch));
+  if(current){
+    applyCamBase();
+    if(!state.reduced) camera.position.y += Math.sin(t*.85)*.05;
+    if(zooming) camera.position.y += Math.sin(t*26)*.02;
+    const dir = new THREE.Vector3(current.camLook[0]-current.camPos[0], current.camLook[1]-current.camPos[1], current.camLook[2]-current.camPos[2]).normalize();
+    dir.applyEuler(new THREE.Euler(pitch, yaw, 0, 'YXZ'));
+    camera.lookAt(camera.position.clone().add(dir));
+    const targetFov = zooming ? 56 : 72;
+    if(Math.abs(camera.fov - targetFov) > .05){ camera.fov += (targetFov - camera.fov)*.12; camera.updateProjectionMatrix(); }
+    // ambient animation
+    if(current.clouds) current.clouds.children.forEach(function(c){ c.position.x += dt*.35; if(c.position.x > 27) c.position.x = -27; });
+    if(current.pts && current.drift){
+      const pos = current.pts.geometry.attributes.position, arr = pos.array;
+      for(let i=0;i<arr.length;i+=3){ arr[i] += current.drift.vx*dt; arr[i+1] += current.drift.vy*dt;
+        if(arr[i+1] > 9.5) arr[i+1] = 0; if(arr[i+1] < 0) arr[i+1] = 9.5; if(arr[i] > 23) arr[i] = -23; }
+      pos.needsUpdate = true;
+    }
+    current.flames.forEach(function(f){ if(!f.base) f.base = f.glow.scale.x;
+      const s = f.base * (.9 + .14*Math.sin(t*13 + f.seed*7) + .05*Math.sin(t*29 + f.seed));
+      f.glow.scale.set(s, s, 1); });
+    current.dyn.forEach(function(fn){ fn(t, dt); });
+    // fluids + portal animation
+    fluidClock += dt; portalClock += dt;
+    if(fluidClock > .26){ fluidClock = 0; fluidIdx = (fluidIdx+1)%3;
+      current.fluidMats.water.forEach(function(m){ m.map = FLUID.water[fluidIdx]; });
+      current.fluidMats.lava.forEach(function(m){ m.map = FLUID.lava[fluidIdx]; }); }
+    if(portalClock > .09){ portalClock = 0; portalCanvasDraw(portalCanvas.getContext('2d'), t, 16, 32); portalTex.needsUpdate = true; }
+  }
+  // bursts
+  for(let i=bursts.length-1;i>=0;i--){ const b = bursts[i]; b.life += dt;
+    const pos = b.pts.geometry.attributes.position, arr = pos.array;
+    for(let j=0;j<b.vel.length;j++){ arr[j*3] += b.vel[j][0]*dt; arr[j*3+1] += b.vel[j][1]*dt; arr[j*3+2] += b.vel[j][2]*dt; b.vel[j][1] -= 6.5*dt; }
+    pos.needsUpdate = true; b.pts.material.opacity = Math.max(0, 1 - b.life/.6);
+    if(b.life > .6){ scene.remove(b.pts); b.pts.geometry.dispose(); b.pts.material.dispose(); bursts.splice(i,1); } }
+  // crack progression
+  if(crackState && crackState.mesh.visible){ crackState.t += dt;
+    const stage = Math.min(3, (crackState.t/.24*4)|0);
+    crackState.mesh.material.map = CRACK_TEX[stage];
+    if(crackState.t >= .26){ crackState.mesh.visible = false; crackState.t = 0; } }
+  updateHover();
+  renderer.render(scene, camera);
+}
+function init(){
+  if(!THREE_OK){ showSimple(true); return; }
+  try{
+    renderer = new THREE.WebGLRenderer({ antialias:!LOWEND, powerPreference:'high-performance' });
+  }catch(e){ showSimple(true); window.__mcBooted = true; clearTimeout(window.__mcWatch); return; }
+  window.__mcBooted = true; clearTimeout(window.__mcWatch);
+  const DPRCAP = LOWEND ? 1 : ((('ontouchstart' in window) && Math.min(screen.width, screen.height) < 820) ? 1.25 : 1.5);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, DPRCAP));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('gl').appendChild(renderer.domElement);
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(72, window.innerWidth/window.innerHeight, .1, 220);
+  raycaster = new THREE.Raycaster();
+  hoverLine = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.01,1.01,1.01)),
+    new THREE.LineBasicMaterial({ color:0x000000 })); hoverLine.visible = false; scene.add(hoverLine);
+  buildTextures(); makeCrackTextures();
+  ADVANCEMENTS.forEach(function(a){ if(a.always) state.unlocked.add(a.id); });
+  if(state.reduced) document.getElementById('motionBtn').textContent = 'Motion: Reduced';
+  buildHotbar();
+  showLoading(true, TIPS[0]);
+  loadBiome('spawn');
+  setTimeout(function(){ showLoading(false); }, 750);
+  document.getElementById('xpfill').style.width = (1/6*100)+'%';
+  document.getElementById('xplvl').textContent = '1';
+  setupInput();
+  window.addEventListener('resize', function(){
+    camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+  requestAnimationFrame(tick);
+}
+init();
+</script>
 </body>
-
 </html>
